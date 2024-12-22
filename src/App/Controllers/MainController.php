@@ -18,6 +18,6 @@ class MainController
 
     public function main()
     {
-        echo $this->view->render("/main.php", ['title' => 'Main page']);
+        echo $this->view->render("/main.php", ['title' => 'Main page', 'dangerousData' => '<script>alert(123)</script>']);
     }
 }
