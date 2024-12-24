@@ -49,8 +49,9 @@ class Container
             }
             $dependencies[] = $this->get($type->getName());
         }
-        dd($dependencies);
+        return $reflectionClass->newInstanceArgs($dependencies);
     }
+
     public function get(string $id)
     {
         if (!array_key_exists($id, $this->definitions)) {
