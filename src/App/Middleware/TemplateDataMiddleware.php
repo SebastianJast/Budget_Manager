@@ -13,6 +13,8 @@ class TemplateDataMiddleware implements MiddlewareInterface
 
     public function process(callable $next)
     {
-        echo "Template date middleware";
+        $this->view->addGloabal('title', 'Expense Tracking App');
+
+        $next();
     }
 }
