@@ -32,11 +32,12 @@
                         loading="lazy" />
                 </div>
                 <div class="container col-12 col-sm-12 col-lg-6">
-                    <form class="w-100">
-                        <h1 class="h1 mb-3 fw-bold text-white">Rejestracja</h1>
+                    <form action="/register" method="POST" class="w-100">
+                        <h2 class="h1 mb-3 fw-bold text-white">Rejestracja</h2>
                         <div class="form-floating my-4">
                             <input
-                                type="email"
+                                name="login"
+                                type="text"
                                 class="form-control"
                                 id="floatingInput"
                                 placeholder="name@example.com" />
@@ -44,7 +45,8 @@
                         </div>
                         <div class="form-floating">
                             <input
-                                type="password"
+                                name="email"
+                                type="email"
                                 class="form-control"
                                 id="floatingPassword"
                                 placeholder="Password" />
@@ -52,6 +54,7 @@
                         </div>
                         <div class="form-floating my-4">
                             <input
+                                name="password"
                                 type="password"
                                 class="form-control"
                                 id="floatingPassword"
@@ -60,6 +63,7 @@
                         </div>
                         <div class="form-floating my-4">
                             <input
+                                name="confirmPassword"
                                 type="password"
                                 class="form-control"
                                 id="floatingPassword"
@@ -68,14 +72,14 @@
                         </div>
                         <div class="form-check text-start my-3">
                             <input
+                                name="terms"
                                 class="form-check-input"
                                 type="checkbox"
-                                value="remember-me"
                                 id="flexCheckDefault" />
                             <label
                                 class="form-check-label text-white"
                                 for="flexCheckDefault">
-                                Remember me
+                                Akceptuję regulamin
                             </label>
                         </div>
                         <button
