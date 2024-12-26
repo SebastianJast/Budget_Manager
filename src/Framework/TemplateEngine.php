@@ -32,7 +32,7 @@ class TemplateEngine
         return "{$this->basePath}/{$path}";
     }
 
-    public function addGloabal(string $key, mixed $value)
+    public function addGlobal(string $key, mixed $value)
     {
         $this->globalTemplateData[$key] = $value;
     }
