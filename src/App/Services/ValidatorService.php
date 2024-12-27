@@ -20,6 +20,12 @@ class ValidatorService
 
     public function validateRegister(array $formData)
     {
-        $this->validator->validate($formData);
+        $this->validator->validate($formData, [
+            'login' => ['required'],
+            'email' => ['required'],
+            'password' => ['required'],
+            'confirmPassword' => ['required'],
+            'terms' => ['required']
+        ]);
     }
 }
