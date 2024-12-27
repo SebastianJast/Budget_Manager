@@ -17,6 +17,8 @@ class Validator
 
     public function validate(array $formData, array $fields)
     {
+        $errors = [];
+
         foreach ($fields as $fieldName => $rules) {
             foreach ($rules as $rule) {
                 $ruleValidator = $this->rules[$rule];
@@ -24,8 +26,12 @@ class Validator
                 if ($ruleValidator->validate($formData, $fieldName, [])) {
                     continue;
                 }
-                echo "Error";
+
+                $errors[$fieldName][] = $ruleValidator->getMessage($formData, $fieldName, []);
             }
+        }
+        if (count($errors)) {
+            dd($errors);
         }
     }
 }
