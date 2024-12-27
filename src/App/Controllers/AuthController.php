@@ -18,6 +18,6 @@ class AuthController
 
     public function register()
     {
-        dd($_POST);
+        $this->validatorService->validateRegister($_POST);
     }
 }
