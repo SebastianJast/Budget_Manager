@@ -83,7 +83,7 @@
                             </label>
                         </div>
                         <button
-                            class="btn btn-warning w-100 py-3 btn-sign-in text-white"
+                            class="btn btn-success w-100 py-3 btn-sign-in text-white"
                             type="submit">
                             Zarejestruj
                         </button>
