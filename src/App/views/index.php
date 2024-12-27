@@ -5,7 +5,7 @@
       Wybierz okres
     </a>
   </p>
-  <div class="collapse text-center col-xxl-8 col-md-8 col-sm-12 mx-lg-auto" id="collapseExample">
+  <div class="collapse text-center col-xxl-8 col-md-6 col-sm-12 mx-auto" id="collapseExample">
     <div class="card card-body">
       <a class="text-decoration-none text-dark active" href="#">Bieżący miesiąc</a>
       <a class="text-decoration-none text-dark active" href="#">Poprzedni miesiąc</a>
