@@ -36,6 +36,7 @@
                         <h2 class="h1 mb-3 fw-bold text-white">Rejestracja</h2>
                         <div class="form-floating my-4">
                             <input
+                                value="<?php echo e($oldFormData['login'] ?? ''); ?>"
                                 name="login"
                                 type="text"
                                 class="form-control"
@@ -50,6 +51,7 @@
                         </div>
                         <div class="form-floating">
                             <input
+                                value="<?php echo e($oldFormData['email'] ?? ''); ?>"
                                 name="email"
                                 type="email"
                                 class="form-control"
@@ -92,6 +94,7 @@
                         </div>
                         <div class="form-check text-start">
                             <input
+                                <?php echo e($oldFormData['tos'] ?? false ? 'checked' : ''); ?>
                                 name="terms"
                                 class="form-check-input"
                                 type="checkbox"
