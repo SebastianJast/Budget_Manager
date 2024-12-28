@@ -32,7 +32,6 @@
                         loading="lazy" />
                 </div>
                 <div class="container col-12 col-sm-12 col-lg-6">
-                    <?php var_dump($errors); ?>
                     <form action="/register" method="POST" class="w-100">
                         <h2 class="h1 mb-3 fw-bold text-white">Rejestracja</h2>
                         <div class="form-floating my-4">
@@ -43,6 +42,11 @@
                                 id="floatingInput"
                                 placeholder="name@example.com" />
                             <label class="label-login" for="floatingInput">Login</label>
+                            <?php if (array_key_exists('login', $errors)) : ?>
+                                <div class="mt-1 text-danger">
+                                    <?php echo e($errors['login'][0]); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="form-floating">
                             <input
@@ -52,6 +56,11 @@
                                 id="floatingPassword"
                                 placeholder="Password" />
                             <label for="floatingPassword">Email</label>
+                            <?php if (array_key_exists('email', $errors)) : ?>
+                                <div class="mt-1 text-danger">
+                                    <?php echo e($errors['email'][0]); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="form-floating my-4">
                             <input
@@ -61,6 +70,11 @@
                                 id="floatingPassword"
                                 placeholder="Password" />
                             <label for="floatingPassword">Hasło</label>
+                            <?php if (array_key_exists('password', $errors)) : ?>
+                                <div class="mt-1 text-danger">
+                                    <?php echo e($errors['password'][0]); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="form-floating my-4">
                             <input
@@ -70,8 +84,13 @@
                                 id="floatingPassword"
                                 placeholder="Password" />
                             <label for="floatingPassword">Powtórz hasło</label>
+                            <?php if (array_key_exists('confirmPassword', $errors)) : ?>
+                                <div class="mt-1 text-danger">
+                                    <?php echo e($errors['confirmPassword'][0]); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                        <div class="form-check text-start my-3">
+                        <div class="form-check text-start">
                             <input
                                 name="terms"
                                 class="form-check-input"
@@ -83,8 +102,13 @@
                                 Akceptuję regulamin
                             </label>
                         </div>
+                        <?php if (array_key_exists('terms', $errors)) : ?>
+                            <div class="text-danger">
+                                <?php echo e($errors['terms'][0]); ?>
+                            </div>
+                        <?php endif; ?>
                         <button
-                            class="btn btn-success w-100 py-3 btn-sign-in text-white"
+                            class="btn mt-3 btn-success w-100 py-3 btn-sign-in text-white"
                             type="submit">
                             Zarejestruj
                         </button>
