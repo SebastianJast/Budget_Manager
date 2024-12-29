@@ -15,6 +15,6 @@ class EmailRule implements RuleInterface
 
     public function getMessage(array $data, string $field, array $params): string
     {
-        return "Nieprawidłowy adres email";
+        return "Podaj poprawny adres e-mail.";
     }
 }
