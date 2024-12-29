@@ -32,6 +32,11 @@ class App
         $this->router->add('GET', $path, $conroller);
     }
 
+    public function post(string $path, array $conroller)
+    {
+        $this->router->add('POST', $path, $conroller);
+    }
+
     public function addMiddleware(string $middleware)
     {
         $this->router->addMiddleware($middleware);
