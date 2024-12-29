@@ -1,20 +1,18 @@
 <?php
 
-$driver = 'mysql';
-$config = http_build_query(data: [
-    'host' => '127.0.0.1',
-    'port' => 3306,
-    'dbname' => 'budget_manager',
-], arg_separator: ';');
+include __DIR__ . '/src/Framework/Database.php';
 
-$dsn = "{$driver}:{$config}";
-$username = 'root';
-$password = '';
+use Framework\Database;
 
-try {
-    $db = new PDO($dsn, $username, $password);
-} catch(PDOException $e) {
-    die("Unable to connect to database");
-}
+$db = new Database(
+    'mysql',
+    [
+        'host' => '127.0.0.1',
+        'port' => 3306,
+        'dbname' => 'budget_manager',
+    ],
+    'root',
+    ''
+);
 
 echo "Connected to database";
