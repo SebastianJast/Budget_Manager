@@ -11,6 +11,10 @@ $dsn = "{$driver}:{$config}";
 $username = 'root';
 $password = '';
 
-$db = new PDO($dsn, $username, $password);
+try {
+    $db = new PDO($dsn, $username, $password);
+} catch(PDOException $e) {
+    die("Unable to connect to database");
+}
 
 echo "Connected to database";
