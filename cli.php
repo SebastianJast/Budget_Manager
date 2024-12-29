@@ -15,4 +15,16 @@ $db = new Database(
     ''
 );
 
-echo "Connected to database";
+
+$search = "anna";
+$query = "SELECT * FROM users WHERE username=:username";
+
+$stmt = $db->connection->prepare($query);
+
+$stmt->bindValue('username', $search, PDO::PARAM_STR);
+
+$stmt->execute(
+    ['username' => $search]
+);
+
+var_dump($stmt->fetchAll(PDO::FETCH_OBJ));
