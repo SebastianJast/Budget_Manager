@@ -15,16 +15,27 @@ $db = new Database(
     ''
 );
 
+try {
+    $db->connection->beginTransaction();
 
-$search = "anna";
-$query = "SELECT * FROM users WHERE username=:username";
+    $db->connection->query("INSERT INTO users VALUES(NULL,'Sebastian', 'abc123', 's.jast92@gmail.com')");
 
-$stmt = $db->connection->prepare($query);
+    $search = "anna";
+    $query = "SELECT * FROM users WHERE username=:username";
 
-$stmt->bindValue('username', $search, PDO::PARAM_STR);
+    $stmt = $db->connection->prepare($query);
 
-$stmt->execute(
-    ['username' => $search]
-);
+    $stmt->bindValue('username', $search, PDO::PARAM_STR);
 
-var_dump($stmt->fetchAll(PDO::FETCH_OBJ));
+    $stmt->execute();
+
+    var_dump($stmt->fetchAll(PDO::FETCH_OBJ));
+
+    $db->connection->commit();
+} catch (Exception $error) {
+    if ($db->connection->inTransaction()) {
+        $db->connection->rollBack();
+    }
+
+    echo "Transaction failed!";
+}
