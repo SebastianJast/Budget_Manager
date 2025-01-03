@@ -22,6 +22,8 @@ class AuthController
 
         $this->userService->isEmailTaker($_POST['email']);
 
+        $this->userService->create($_POST);
+
         redirectTo('/');
     }
 }

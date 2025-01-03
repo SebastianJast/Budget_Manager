@@ -20,8 +20,20 @@ class UserService
             ]
         )->count();
 
-        if($emailCount > 0) {
+        if ($emailCount > 0) {
             throw new ValidationException(['email' => ['Adres e-mail już istnieje']]);
         }
+    }
+
+    public function create(array $formData)
+    {
+        $this->db->query(
+            "INSERT INTO users(username, password, email) VALUES(:login, :password, :email)",
+            [
+                'login' => $formData['login'],
+                'password' => $formData['password'],
+                'email' => $formData['email']
+            ]
+        );
     }
 }
