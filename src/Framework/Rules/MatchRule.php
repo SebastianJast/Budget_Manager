@@ -12,8 +12,8 @@ class MatchRule implements RuleInterface
     {
         $fieldOne = $data[$field];
         $fieldTwo = $data[$params[0]];
-
-        return $fieldOne == $fieldTwo;
+        
+        return $fieldOne === $fieldTwo;
     }
 
     public function getMessage(array $data, string $field, array $params): string

@@ -30,7 +30,7 @@ class ValidatorService
             'login' => ['required', 'loginLength', 'loginFormat'],
             'email' => ['required', 'email'],
             'password' => ['required', 'passwordLength'],
-            'confirmPassword' => ['required', 'match: password'],
+            'confirmPassword' => ['required', 'match:password'],
             'terms' => ['terms']
         ]);
     }
