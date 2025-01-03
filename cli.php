@@ -1,41 +1,22 @@
 <?php
 
-include __DIR__ . '/src/Framework/Database.php';
+include __DIR__ . '/vendor/autoload.php';
 
+use Dotenv\Dotenv;
 use Framework\Database;
+use App\Config\Paths;
+
+$dotenv = Dotenv::createImmutable(Paths::ROOT);
+$dotenv->load();
 
 $db = new Database(
-    'mysql',
+    $_ENV['DB_DRIVER'],
     [
-        'host' => '127.0.0.1',
-        'port' => 3306,
-        'dbname' => 'budget_manager',
+        'host' => $_ENV['DB_HOST'],
+        'port' => $_ENV['DB_PORT'],
+        'dbname' => $_ENV['DB_NAME'],
     ],
-    'root',
-    ''
+    $_ENV['DB_USER'],
+    $_ENV['DB_PASS']
 );
 
-try {
-    $db->connection->beginTransaction();
-
-    $db->connection->query("INSERT INTO users VALUES(NULL,'Sebastian', 'abc123', 's.jast92@gmail.com')");
-
-    $search = "anna";
-    $query = "SELECT * FROM users WHERE username=:username";
-
-    $stmt = $db->connection->prepare($query);
-
-    $stmt->bindValue('username', $search, PDO::PARAM_STR);
-
-    $stmt->execute();
-
-    var_dump($stmt->fetchAll(PDO::FETCH_OBJ));
-
-    $db->connection->commit();
-} catch (Exception $error) {
-    if ($db->connection->inTransaction()) {
-        $db->connection->rollBack();
-    }
-
-    echo "Transaction failed!";
-}
