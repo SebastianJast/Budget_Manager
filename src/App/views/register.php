@@ -33,6 +33,7 @@
                 </div>
                 <div class="container col-12 col-sm-12 col-lg-6">
                     <form action="/register" method="POST" class="w-100">
+                        <?php include $this->resolve('partials/_csrf.php'); ?>
                         <h2 class="h1 mb-3 fw-bold text-white">Rejestracja</h2>
                         <div class="form-floating my-4">
                             <input
