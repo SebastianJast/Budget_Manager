@@ -32,91 +32,58 @@
                         loading="lazy" />
                 </div>
                 <div class="container col-12 col-sm-12 col-lg-6">
-                    <form action="/register" method="POST" class="w-100">
+                    <form action="/login" method="POST" class="mb-3 w-100">
                         <?php include $this->resolve('partials/_csrf.php'); ?>
-                        <h2 class="h1 mb-3 fw-bold text-white">Rejestracja</h2>
+                        <h2 class="h1 mb-3 fw-bold text-white">Logowanie</h2>
                         <div class="form-floating my-4">
-                            <input
-                                value="<?php echo e($oldFormData['login'] ?? ''); ?>"
-                                name="login"
-                                type="text"
-                                class="form-control"
-                                id="floatingInput"
-                                placeholder="name@example.com" />
-                            <label class="label-login" for="floatingInput">Login</label>
-                            <?php if (array_key_exists('login', $errors)) : ?>
-                                <div class="mt-1 text-danger">
-                                    <?php echo e($errors['login'][0]); ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="form-floating">
                             <input
                                 value="<?php echo e($oldFormData['email'] ?? ''); ?>"
                                 name="email"
                                 type="email"
                                 class="form-control"
-                                id="floatingPassword"
-                                placeholder="Password" />
-                            <label for="floatingPassword">Email</label>
+                                id="floatingInput"
+                                placeholder="name@example.com" />
+                            <label class="label-login" for="floatingInput">Email address</label>
                             <?php if (array_key_exists('email', $errors)) : ?>
                                 <div class="mt-1 text-danger">
                                     <?php echo e($errors['email'][0]); ?>
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <div class="form-floating my-4">
+                        <div class="form-floating">
                             <input
                                 name="password"
                                 type="password"
                                 class="form-control"
                                 id="floatingPassword"
                                 placeholder="Password" />
-                            <label for="floatingPassword">Hasło</label>
+                            <label for="floatingPassword">Password</label>
                             <?php if (array_key_exists('password', $errors)) : ?>
                                 <div class="mt-1 text-danger">
                                     <?php echo e($errors['password'][0]); ?>
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <div class="form-floating my-4">
+                        <div class="form-check text-start my-3">
                             <input
-                                name="confirmPassword"
-                                type="password"
-                                class="form-control"
-                                id="floatingPassword"
-                                placeholder="Password" />
-                            <label for="floatingPassword">Powtórz hasło</label>
-                            <?php if (array_key_exists('confirmPassword', $errors)) : ?>
-                                <div class="mt-1 text-danger">
-                                    <?php echo e($errors['confirmPassword'][0]); ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="form-check text-start">
-                            <input
-                                <?php echo e($oldFormData['tos'] ?? false ? 'checked' : ''); ?>
-                                name="terms"
+                                name="rememberMe"
                                 class="form-check-input"
                                 type="checkbox"
+                                value="remember-me"
                                 id="flexCheckDefault" />
                             <label
                                 class="form-check-label text-white"
                                 for="flexCheckDefault">
-                                Akceptuję regulamin
+                                Zapamiętaj mnie
                             </label>
                         </div>
-                        <?php if (array_key_exists('terms', $errors)) : ?>
-                            <div class="text-danger">
-                                <?php echo e($errors['terms'][0]); ?>
-                            </div>
-                        <?php endif; ?>
                         <button
-                            class="btn mt-3 btn-success w-100 py-3 btn-sign-in text-white"
+                            class="btn btn-success w-100 py-3 btn-sign-in"
                             type="submit">
-                            Zarejestruj
+                            Logowanie
                         </button>
                     </form>
+                    <a class="text-white" href="/register">Utwórz nowe konto</a>
                 </div>
             </div>
         </div>
