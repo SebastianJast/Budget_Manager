@@ -52,7 +52,7 @@ class UserService
         $passwordMatch = password_verify($formData['password'], $user['password'] ?? '');
 
         if (!$user || !$passwordMatch) {
-            throw new ValidationException(['password' => ['Nieprawidłowe hasło']]);
+            throw new ValidationException(['password' => ['Nieprawidłowe hasło lub adres e-mail']]);
         }
 
         session_regenerate_id();

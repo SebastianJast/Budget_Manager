@@ -43,7 +43,7 @@
                                 class="form-control"
                                 id="floatingInput"
                                 placeholder="name@example.com" />
-                            <label class="label-login" for="floatingInput">Email address</label>
+                            <label class="label-login" for="floatingInput">Email</label>
                             <?php if (array_key_exists('email', $errors)) : ?>
                                 <div class="mt-1 text-danger">
                                     <?php echo e($errors['email'][0]); ?>
@@ -60,7 +60,7 @@
                                 class="form-control"
                                 id="floatingPassword"
                                 placeholder="Password" />
-                            <label for="floatingPassword">Password</label>
+                            <label for="floatingPassword">Hasło</label>
                             <?php if (array_key_exists('password', $errors)) : ?>
                                 <div class="mt-1 text-danger">
                                     <?php echo e($errors['password'][0]); ?>
