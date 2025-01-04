@@ -37,6 +37,10 @@ class UserService
                 'email' => $formData['email']
             ]
         );
+
+        session_regenerate_id();
+
+        $_SESSION['user'] = $this->db->id();
     }
 
     public function login(array $formData)
