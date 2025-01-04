@@ -52,7 +52,7 @@
                                 <a href="#" class="nav-link link-light active">Ustawienia</a>
                             </li>
                             <li class="nav-item px-4">
-                                <a href="#" class="nav-link link-light active">Wyloguj się</a>
+                                <a href="/logout" class="nav-link link-light active">Wyloguj się</a>
                             </li>
                         </ul>
                     </div>
