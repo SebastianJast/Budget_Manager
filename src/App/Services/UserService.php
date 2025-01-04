@@ -51,6 +51,8 @@ class UserService
             throw new ValidationException(['password' => ['Nieprawidłowe hasło']]);
         }
 
+        session_regenerate_id();
+
         $_SESSION['user'] = $user['id'];
     }
 }
