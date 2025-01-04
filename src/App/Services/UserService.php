@@ -66,4 +66,15 @@ class UserService
 
         session_regenerate_id();
     }
+
+    public function handleRememberMe(array $formData)
+    {
+        if (!empty($formData['rememberMe'])) {
+            setcookie('email', $formData['email'], time() + 3600 * 24 * 7);
+            setcookie('password', $formData['password'], time() + 3600 * 24 * 7);
+        } else {
+            setcookie('email', $formData['email'], 30);
+            setcookie('password', $formData['password'], 30);
+        }
+    }
 }

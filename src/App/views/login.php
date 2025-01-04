@@ -37,7 +37,7 @@
                         <h2 class="h1 mb-3 fw-bold text-white">Logowanie</h2>
                         <div class="form-floating my-4">
                             <input
-                                value="<?php echo e($oldFormData['email'] ?? ''); ?>"
+                                value="<?php echo e($oldFormData['email'] ?? ($_COOKIE['email'] ?? '')); ?>"
                                 name="email"
                                 type="email"
                                 class="form-control"
@@ -52,6 +52,9 @@
                         </div>
                         <div class="form-floating">
                             <input
+                                value="<?php if (isset($_COOKIE['password'])) {
+                                            echo $_COOKIE['password'];
+                                        }; ?>"
                                 name="password"
                                 type="password"
                                 class="form-control"
