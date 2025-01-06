@@ -37,13 +37,13 @@
                         <h2 class="h1 mb-3 fw-bold text-white">Logowanie</h2>
                         <div class="form-floating my-4">
                             <input
-                                value="<?php echo e($oldFormData['email'] ?? ''); ?>"
+                                value="<?php echo e($oldFormData['email'] ?? ($_COOKIE['email'] ?? '')); ?>"
                                 name="email"
                                 type="email"
                                 class="form-control"
                                 id="floatingInput"
                                 placeholder="name@example.com" />
-                            <label class="label-login" for="floatingInput">Email address</label>
+                            <label class="label-login" for="floatingInput">Email</label>
                             <?php if (array_key_exists('email', $errors)) : ?>
                                 <div class="mt-1 text-danger">
                                     <?php echo e($errors['email'][0]); ?>
@@ -52,12 +52,15 @@
                         </div>
                         <div class="form-floating">
                             <input
+                                value="<?php if (isset($_COOKIE['password'])) {
+                                            echo $_COOKIE['password'];
+                                        }; ?>"
                                 name="password"
                                 type="password"
                                 class="form-control"
                                 id="floatingPassword"
                                 placeholder="Password" />
-                            <label for="floatingPassword">Password</label>
+                            <label for="floatingPassword">Hasło</label>
                             <?php if (array_key_exists('password', $errors)) : ?>
                                 <div class="mt-1 text-danger">
                                     <?php echo e($errors['password'][0]); ?>

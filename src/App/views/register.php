@@ -93,24 +93,6 @@
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <div class="form-check text-start">
-                            <input
-                                <?php echo e($oldFormData['tos'] ?? false ? 'checked' : ''); ?>
-                                name="terms"
-                                class="form-check-input"
-                                type="checkbox"
-                                id="flexCheckDefault" />
-                            <label
-                                class="form-check-label text-white"
-                                for="flexCheckDefault">
-                                Akceptuję regulamin
-                            </label>
-                        </div>
-                        <?php if (array_key_exists('terms', $errors)) : ?>
-                            <div class="text-danger">
-                                <?php echo e($errors['terms'][0]); ?>
-                            </div>
-                        <?php endif; ?>
                         <button
                             class="btn mt-3 btn-success w-100 py-3 btn-sign-in text-white"
                             type="submit">

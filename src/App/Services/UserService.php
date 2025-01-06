@@ -52,7 +52,7 @@ class UserService
         $passwordMatch = password_verify($formData['password'], $user['password'] ?? '');
 
         if (!$user || !$passwordMatch) {
-            throw new ValidationException(['password' => ['Nieprawidłowe hasło']]);
+            throw new ValidationException(['password' => ['Nieprawidłowe hasło lub adres e-mail']]);
         }
 
         session_regenerate_id();
@@ -65,5 +65,16 @@ class UserService
         unset($_SESSION['user']);
 
         session_regenerate_id();
+    }
+
+    public function handleRememberMe(array $formData)
+    {
+        if (!empty($formData['rememberMe'])) {
+            setcookie('email', $formData['email'], time() + 3600 * 24 * 7);
+            setcookie('password', $formData['password'], time() + 3600 * 24 * 7);
+        } else {
+            setcookie('email', $formData['email'], 30);
+            setcookie('password', $formData['password'], 30);
+        }
     }
 }

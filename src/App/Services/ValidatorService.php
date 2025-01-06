@@ -21,7 +21,6 @@ class ValidatorService
         $this->validator->add('loginLength', new LoginLengthRule());
         $this->validator->add('loginFormat', new LoginFormatRule());
         $this->validator->add('passwordLength', new PasswordLengthRule());
-        $this->validator->add('terms', new TermsRule());
     }
 
     public function validateRegister(array $formData)
@@ -31,7 +30,6 @@ class ValidatorService
             'email' => ['required', 'email'],
             'password' => ['required', 'passwordLength'],
             'confirmPassword' => ['required', 'match:password'],
-            'terms' => ['terms']
         ]);
     }
 
