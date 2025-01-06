@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use Framework\Rules\{RequiredRule, EmailRule, LengthMaxRule, LoginFormatRule, LoginLengthRule, MatchRule, NumericRule, PasswordLengthRule, TermsRule};
+use Framework\Rules\{DateFormatRule, RequiredRule, EmailRule, LengthMaxRule, LoginFormatRule, LoginLengthRule, MatchRule, NumericRule, PasswordLengthRule, TermsRule};
 use Framework\Validator;
 
 class ValidatorService
@@ -23,6 +23,7 @@ class ValidatorService
         $this->validator->add('passwordLength', new PasswordLengthRule());
         $this->validator->add('lengthMax', new LengthMaxRule());
         $this->validator->add('numeric', new NumericRule());
+        $this->validator->add('dateFormat', new DateFormatRule());
     }
 
     public function validateRegister(array $formData)
@@ -47,7 +48,7 @@ class ValidatorService
     {
         $this->validator->validate($formData, [
             'amount' => ['required', 'numeric'],
-            'date' => ['required'],
+            'date' => ['required', 'dateFormat:Y-m-d'],
             'category' => ['required'],
             'comment' => ['required', 'lengthMax:255']
         ]);
