@@ -49,4 +49,22 @@ class IncomeService
             ]
         );
     }
+
+    public function getUserIncomes()
+    {
+        $incomes = $this->db->query(
+            "SELECT incomes.amount, incomes.date_of_income, incomes.income_comment, incomes_category_assigned_to_users.name AS 'category' FROM incomes
+            INNER JOIN incomes_category_assigned_to_users ON incomes_category_assigned_to_users.user_id = incomes.user_id
+            WHERE incomes.income_category_assigned_to_user_id = incomes_category_assigned_to_users.id 
+            AND incomes.user_id = :user_id 
+            AND incomes.date_of_income BETWEEN :first_day_month AND :last_day_month",
+            [
+                'user_id' => $_SESSION['user'],
+                'first_day_month' => '2024-01-01',
+                'last_day_month' => '2025-01-31'
+            ]
+        )->findAll();
+
+        return $incomes;
+    }
 }

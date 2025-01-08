@@ -25,5 +25,7 @@ class IncomeController
         $idCategory = $this->incomeService->selectIdCategory($_POST);
 
         $this->incomeService->create($_POST, $idCategory);
+
+        redirectTo('/');
     }
 }

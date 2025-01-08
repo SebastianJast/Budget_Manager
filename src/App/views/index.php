@@ -29,51 +29,23 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
-            <li class="fw-bold py-2">Wynagrodzenie: 5000</li>
-            <li>
-              2024-09-28 5000 wypłata
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Sprzedaż na Allegro: 2000</li>
-            <li>
-              2024-09-28 2000 Rower
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Odsetki bankowe: 300</li>
-            <li>
-              2024-09-28 300 lokata
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
+            <?php foreach ($incomes as $income) :?>
+              <li class="fw-bold py-2"><?php echo e($income['category']); ?> : <?php echo e($income['amount']); ?></li>
+              <li>
+                <?php echo ($income['date_of_income']); ?> <?php echo e($income['income_comment']); ?>
+                <span><img
+                    class="pen"
+                    src="../fonts/pen-solid.svg"
+                    alt="pen"
+                    height="15"
+                    width="15" /></span><span><img
+                    class="trash"
+                    src="../fonts/trash-can-solid.svg"
+                    alt="trash"
+                    height="15"
+                    width="15" /></span>
+              </li>
+            <?php endforeach; ?>
           </ul>
         </div>
       </div>
