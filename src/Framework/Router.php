@@ -14,11 +14,14 @@ class Router
     {
         $path = $this->normalizePath($path);
 
+        $regexPath = preg_replace('#{[^/]+}#', '([^/]+)', $path);
+
         $this->routes[] = [
             'path' => $path,
             'method' => strtoupper($method),
             'controller' => $controller,
-            'middlewares' => []
+            'middlewares' => [],
+            'regexPath' => $regexPath
         ];
     }
 
@@ -37,7 +40,7 @@ class Router
         $method = strtoupper($method);
 
         foreach ($this->routes as $route) {
-            if (!preg_match("#^{$route['path']}$#", $path) || $route['method'] !== $method) {
+            if (!preg_match("#^{$route['regexPath']}$#", $path) || $route['method'] !== $method) {
                 continue;
             }
             [$class, $function] = $route['controller'];
