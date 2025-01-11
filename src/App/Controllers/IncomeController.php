@@ -65,6 +65,8 @@ class IncomeController
 
     public function delete(array $params)
     {
-        dd($params);
+        $this->incomeService->delete((int) $params['income']);
+
+        redirectTo('');
     }
 }

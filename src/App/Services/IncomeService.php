@@ -107,4 +107,15 @@ class IncomeService
             ]
         );
     }
+
+    public function delete(int $id)
+    {
+        $this->db->query(
+            "DELETE FROM incomes WHERE id = :id AND user_id = :user_id",
+            [
+                'id' => $id,
+                'user_id' => $_SESSION['user']
+            ]
+        );
+    }
 }
