@@ -31,6 +31,17 @@ class IncomeController
 
     public function editView(array $params)
     {
-        dd($params);
+        $incomesCategories = $this->incomeService->selectCategory();
+
+        $income = $this->incomeService->getUserIncome($params['income']);
+
+        if (!$income) {
+            redirectTo('/');
+        }
+
+        echo $this->view->render('transactions/IncomeEdit.php', [
+            'income' => $income,
+            'incomesCategories' => $incomesCategories
+        ]);
     }
 }
