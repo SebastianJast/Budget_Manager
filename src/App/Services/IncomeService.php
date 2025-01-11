@@ -84,4 +84,27 @@ class IncomeService
             ]
         )->find();
     }
+
+    public function update(array $formData, int $id, array $idCategory)
+    {
+        $formattedDate = "{$formData['date']} 00:00:00";
+
+        $this->db->query(
+            "UPDATE incomes 
+            SET income_category_assigned_to_user_id = :category_id,
+            amount = :amount,
+            date_of_income = :date,
+            income_comment = :comment
+            WHERE id = :id
+            AND user_id = :user_id",
+            [
+                'id' => $id,
+                'user_id' => $_SESSION['user'],
+                'category_id' => $idCategory['id'],
+                'amount' => $formData['amount'],
+                'date' => $formattedDate,
+                'comment' => $formData['comment'],
+            ]
+        );
+    }
 }

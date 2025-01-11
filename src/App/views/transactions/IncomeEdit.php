@@ -12,7 +12,7 @@
                     loading="lazy" />
             </div>
             <div class="container col-12 col-sm-12 col-lg-6">
-                <form action="/income" method="POST" class="w-100">
+                <form method="POST" class="w-100">
                     <?php include $this->resolve("partials/_csrf.php"); ?>
                     <h2 class="h1 mb-3 fw-bold text-white">Wprowadź przychód</h2>
                     <div class="form-floating my-4">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-floating my-4">
                         <select name="category" id="categorySelect" class="form-control">
-                            <option value=""><?php echo e($income['category'] ?? '-- Wybierz kategorię --'); ?></option>
+                            <option value="<?php echo e($income['category'] ?? ''); ?>"><?php echo e($income['category'] ?? '-- Wybierz kategorię --'); ?></option>
                             <?php foreach ($incomesCategories as $incomeCategory) {
                                 echo '<option value="' . ($incomeCategory['name']) . '">' . $incomeCategory['name'] . '</option>';
                             } ?>

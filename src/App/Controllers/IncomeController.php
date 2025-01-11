@@ -44,4 +44,23 @@ class IncomeController
             'incomesCategories' => $incomesCategories
         ]);
     }
+
+    public function edit(array $params)
+    {
+        $income = $this->incomeService->getUserIncome($params['income']);
+
+        if (!$income) {
+            redirectTo('/');
+        }
+
+        $this->validatorService->validateIncome($_POST);
+
+        $idCategory = $this->incomeService->selectIdCategory($_POST);
+
+        $this->incomeService->update($_POST, $income['id'], $idCategory);
+
+        // redirectTo($_SERVER['HTTP_REFERER']);
+        redirectTo('/');
+
+    }
 }
