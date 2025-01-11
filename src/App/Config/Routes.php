@@ -6,8 +6,7 @@ namespace App\Config;
 
 use Framework\App;
 use App\Controllers\{AuthController, HomeController, MainController, IncomeController};
-use App\Middleware\AuthRequiredMiddleware;
-use App\Middleware\GuestOnlyMiddleware;
+use App\Middleware\{AuthRequiredMiddleware, GuestOnlyMiddleware};
 
 function registerRoutes(App $app)
 {
@@ -22,4 +21,5 @@ function registerRoutes(App $app)
     $app->post('/income', [IncomeController::class, 'create'])->add(AuthRequiredMiddleware::class);
     $app->get('/income/{income}', [IncomeController::class, 'editView']);
     $app->post('/income/{income}', [IncomeController::class, 'edit']);
+    $app->delete('/income/{income}', [IncomeController::class, 'delete']);
 }

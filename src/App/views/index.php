@@ -35,22 +35,28 @@
               <li class="fw-bold py-2"><?php echo e($income['category']); ?> : <?php echo e($income['amount']); ?></li>
               <li>
                 <?php echo ($income['date_of_income']); ?> <?php echo e($income['income_comment']); ?>
-                <a href="/income/<?php echo e($income['id']);?>">
-                  <span><img
-                      class="pen"
-                      src="../fonts/pen-solid.svg"
-                      alt="pen"
-                      height="15"
-                      width="15" /></span>
+              </li>
+              <li class="d-inline-flex align-items-center">
+                <a href="/income/<?php echo e($income['id']); ?>">
+                  <img
+                    class="pen"
+                    src="../fonts/pen-solid.svg"
+                    alt="pen"
+                    height="15"
+                    width="15" />
                 </a>
-                <a href="">
-                  <span><img
+                <form action="/income/<?php echo e($income['id']); ?>" method="POST">
+                  <input type="hidden" name="_METHOD" value="DELETE">
+                  <?php include $this->resolve("partials/_csrf.php"); ?>
+                  <button type="submit" class="btn btn-link">
+                    <img
                       class="trash"
                       src="../fonts/trash-can-solid.svg"
                       alt="trash"
                       height="15"
-                      width="15" /></span>
-                </a>
+                      width="15" />
+                  </button>
+                </form>
               </li>
             <?php endforeach; ?>
           </ul>
