@@ -50,7 +50,7 @@ class IncomeService
         );
     }
 
-    public function getUserIncomes()
+    public function getUserIncomes($firstDayMonth, $lastDayMonth)
     {
         $incomes = $this->db->query(
             "SELECT incomes.amount, incomes.date_of_income, incomes.income_comment, incomes_category_assigned_to_users.name AS 'category' FROM incomes
@@ -60,8 +60,8 @@ class IncomeService
             AND incomes.date_of_income BETWEEN :first_day_month AND :last_day_month",
             [
                 'user_id' => $_SESSION['user'],
-                'first_day_month' => '2024-01-01',
-                'last_day_month' => '2025-01-31'
+                'first_day_month' => $firstDayMonth,
+                'last_day_month' => $lastDayMonth
             ]
         )->findAll();
 

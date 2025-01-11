@@ -13,10 +13,10 @@ class HomeController
 
     public function home()
     {
-        $incomes = $this->incomeService->getUserIncomes();
-
         $transactions = $this->transactionsService->setTransactionsLabels($_GET);
 
+        $incomes = $this->incomeService->getUserIncomes($transactions[1],$transactions[2]);
+        
         echo $this->view->render("/index.php", ['incomes' => $incomes, 'selectedTitle' => $transactions[0]]);
     }
 }
