@@ -15,7 +15,7 @@ class IncomeController
     {
         $incomesCategories = $this->incomeService->selectCategory();
 
-        echo $this->view->render("transactions/income.php",['incomesCategories' => $incomesCategories]);
+        echo $this->view->render("transactions/income.php", ['incomesCategories' => $incomesCategories]);
     }
 
     public function create()
@@ -27,5 +27,10 @@ class IncomeController
         $this->incomeService->create($_POST, $idCategory);
 
         redirectTo('/');
+    }
+
+    public function editView(array $params)
+    {
+        dd($params);
     }
 }

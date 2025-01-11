@@ -35,17 +35,22 @@
               <li class="fw-bold py-2"><?php echo e($income['category']); ?> : <?php echo e($income['amount']); ?></li>
               <li>
                 <?php echo ($income['date_of_income']); ?> <?php echo e($income['income_comment']); ?>
-                <span><img
-                    class="pen"
-                    src="../fonts/pen-solid.svg"
-                    alt="pen"
-                    height="15"
-                    width="15" /></span><span><img
-                    class="trash"
-                    src="../fonts/trash-can-solid.svg"
-                    alt="trash"
-                    height="15"
-                    width="15" /></span>
+                <a href="/income/<?php echo e($income['id']);?>">
+                  <span><img
+                      class="pen"
+                      src="../fonts/pen-solid.svg"
+                      alt="pen"
+                      height="15"
+                      width="15" /></span>
+                </a>
+                <a href="">
+                  <span><img
+                      class="trash"
+                      src="../fonts/trash-can-solid.svg"
+                      alt="trash"
+                      height="15"
+                      width="15" /></span>
+                </a>
               </li>
             <?php endforeach; ?>
           </ul>
