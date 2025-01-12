@@ -70,66 +70,31 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
-            <li class="fw-bold py-2">Ubranie: 500</li>
-            <li>
-              2024-09-28 500 kurtka zimowa
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Wycieczka: 400</li>
-            <li>
-              2024-09-28 400
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Jedzenie: 300</li>
-            <li>
-              2024-09-28 300
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Rozrywka: 200</li>
-            <li>
-              2024-09-28 200 Wyjazd na narty
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
+          <?php foreach ($expenses as $expense) : ?>
+              <li class="fw-bold py-2"><?php echo e($expense['category']); ?> : <?php echo e($expense['amount']); ?></li>
+              <li>
+                <?php echo ($expense['date_of_expense']); ?> <?php echo e($expense['expense_comment']); ?>
+              </li>
+              <li class="d-inline-flex align-items-center">
+                  <img
+                    class="pen"
+                    src="../fonts/pen-solid.svg"
+                    alt="pen"
+                    height="15"
+                    width="15" />
+                </a>
+                <form>
+                  <button type="submit" class="btn btn-link">
+                    <img
+                      class="trash"
+                      src="../fonts/trash-can-solid.svg"
+                      alt="trash"
+                      height="15"
+                      width="15" />
+                  </button>
+                </form>
+              </li>
+            <?php endforeach; ?>
           </ul>
         </div>
       </div>

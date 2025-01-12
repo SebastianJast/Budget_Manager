@@ -75,4 +75,24 @@ class ExpenseService
             ]
         );
     }
+
+    public function getUserExpenses($firstDayMonth, $lastDayMonth)
+    {
+        $params = [
+            'user_id' => $_SESSION['user'],
+            'first_day_month' => $firstDayMonth,
+            'last_day_month' => $lastDayMonth
+        ];
+
+        $expenses = $this->db->query(
+            "SELECT expenses.id, expenses.amount, expenses.date_of_expense, expenses.expense_comment, expenses_category_assigned_to_users.name AS 'category' FROM expenses
+            INNER JOIN expenses_category_assigned_to_users ON expenses_category_assigned_to_users.user_id = expenses.user_id
+            WHERE expenses.expense_category_assigned_to_user_id = expenses_category_assigned_to_users.id 
+            AND expenses.user_id = :user_id 
+            AND expenses.date_of_expense BETWEEN :first_day_month AND :last_day_month",
+            $params
+        )->findAll();
+
+        return $expenses;
+    }
 }
