@@ -78,4 +78,9 @@ class ExpenseController
         // redirectTo($_SERVER['HTTP_REFERER']);
         redirectTo('/');
     }
+
+    public function delete(array $params)
+    {
+        dd($params);
+    }
 }

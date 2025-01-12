@@ -26,4 +26,5 @@ function registerRoutes(App $app)
     $app->post('/expense', [ExpenseController::class, 'create'])->add(AuthRequiredMiddleware::class);
     $app->get('/expense/{expense}', [ExpenseController::class, 'editView']);
     $app->post('/expense/{expense}', [ExpenseController::class, 'edit']);
+    $app->delete('/expense/{expense}', [ExpenseController::class, 'delete']);
 }

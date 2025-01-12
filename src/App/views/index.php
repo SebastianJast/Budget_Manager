@@ -84,7 +84,9 @@
                     height="15"
                     width="15" />
                 </a>
-                <form>
+                <form action="/expense/<?php echo e($expense['id']); ?>" method="POST">
+                  <input type="hidden" name="_METHOD" value="DELETE">
+                  <?php include $this->resolve("partials/_csrf.php"); ?>
                   <button type="submit" class="btn btn-link">
                     <img
                       class="trash"
