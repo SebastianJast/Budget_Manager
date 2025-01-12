@@ -112,4 +112,29 @@ class ExpenseService
             ]
         )->find();
     }
+
+    public function update(array $formData, int $id, array $idCategory, array $idPayment)
+    {
+        $formattedDate = "{$formData['date']} 00:00:00";
+
+        $this->db->query(
+            "UPDATE expenses 
+            SET expense_category_assigned_to_user_id = :category_id,
+            payment_method_assigned_to_user_id = :payment_id,
+            amount = :amount,
+            date_of_expense = :date,
+            expense_comment = :comment
+            WHERE id = :id
+            AND user_id = :user_id",
+            [
+                'id' => $id,
+                'user_id' => $_SESSION['user'],
+                'category_id' => $idCategory['id'],
+                'payment_id' => $idPayment['id'],
+                'amount' => $formData['amount'],
+                'date' => $formattedDate,
+                'comment' => $formData['comment'],
+            ]
+        );
+    }
 }

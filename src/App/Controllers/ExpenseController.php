@@ -58,4 +58,24 @@ class ExpenseController
             'expensesPayments' => $expensesPayments
         ]);
     }
+
+    public function edit(array $params)
+    {
+        $expense = $this->expenseService->getUserExpense($params['expense']);
+
+        if (!$expense) {
+            redirectTo('/');
+        }
+
+        $this->validatorService->validateExpense($_POST);
+
+        $idCategory = $this->expenseService->selectIdCategory($_POST);
+
+        $idPayment = $this->expenseService->selectIdPayment($_POST);
+
+        $this->expenseService->update($_POST, $expense['id'], $idCategory, $idPayment);
+
+        // redirectTo($_SERVER['HTTP_REFERER']);
+        redirectTo('/');
+    }
 }
