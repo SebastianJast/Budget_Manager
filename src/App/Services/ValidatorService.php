@@ -53,4 +53,14 @@ class ValidatorService
             'comment' => ['required', 'lengthMax:255']
         ]);
     }
+
+    public function validateExpense(array $formData)
+    {
+        $this->validator->validate($formData, [
+            'amount' => ['required', 'numeric'],
+            'date' => ['required', 'dateFormat:Y-m-d'],
+            'category' => ['required'],
+            'comment' => ['required', 'lengthMax:255']
+        ]);
+    }
 }

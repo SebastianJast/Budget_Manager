@@ -23,4 +23,5 @@ function registerRoutes(App $app)
     $app->post('/income/{income}', [IncomeController::class, 'edit']);
     $app->delete('/income/{income}', [IncomeController::class, 'delete']);
     $app->get('/expense', [ExpenseController::class, 'createView'])->add(AuthRequiredMiddleware::class);
+    $app->post('/expense', [ExpenseController::class, 'create'])->add(AuthRequiredMiddleware::class);
 }
