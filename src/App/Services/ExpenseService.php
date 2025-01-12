@@ -95,4 +95,21 @@ class ExpenseService
 
         return $expenses;
     }
+
+    public function getUserExpense(string $id)
+    {
+        return $this->db->query(
+            "SELECT expenses.id, expenses.amount, expenses.date_of_expense, expenses.expense_comment, expenses_category_assigned_to_users.name AS 'category', payment_methods_assigned_to_users.name AS 'payment' FROM expenses
+            INNER JOIN expenses_category_assigned_to_users ON expenses_category_assigned_to_users.user_id = expenses.user_id
+            INNER JOIN payment_methods_assigned_to_users ON payment_methods_assigned_to_users.user_id = expenses.user_id
+            WHERE expenses.expense_category_assigned_to_user_id = expenses_category_assigned_to_users.id 
+            AND expenses.payment_method_assigned_to_user_id = payment_methods_assigned_to_users.id
+            AND expenses.user_id = :user_id 
+            AND expenses.id = :id",
+            [
+                'user_id' => $_SESSION['user'],
+                'id' => $id
+            ]
+        )->find();
+    }
 }

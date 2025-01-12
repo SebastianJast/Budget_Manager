@@ -1,4 +1,4 @@
-<?php include $this->resolve("partials/_header.php") ?>
+p<?php include $this->resolve("partials/_header.php") ?>
 <main>
     <div class="container col-xxl-10 px-1 py-1">
         <div class="row d-flex flex-column flex-lg-row align-items-center">
@@ -12,12 +12,12 @@
                     loading="lazy" />
             </div>
             <div class="container col-12 col-sm-12 col-lg-6">
-                <form action="/expense" method="POST" class="w-100">
+                <form method="POST" class="w-100">
                     <?php include $this->resolve("partials/_csrf.php"); ?>
                     <h2 class="h1 mb-3 fw-bold text-white">Wprowadź wydatek</h2>
                     <div class="form-floating my-4">
                         <input
-                            value="<?php echo e($oldFormData['amount'] ?? ''); ?>"
+                            value="<?php echo e($expense['amount']); ?>"
                             name="amount"
                             type="number"
                             class="form-control"
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-floating my-4">
                         <input
-                            value="<?php echo e($oldFormData['date'] ?? ''); ?>"
+                            value="<?php echo e($expense['date_of_expense']); ?>"
                             name="date"
                             type="date"
                             class="form-control"
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-floating my-4">
                         <select name="category" id="categorySelect" class="form-control">
-                            <option value=""><?php echo e($oldFormData['category'] ?? '-- Wybierz kategorię --'); ?></option>
+                            <option value="<?php echo e($expense['category'] ?? ''); ?>"><?php echo e($expense['category'] ?? '-- Wybierz kategorię --'); ?></option>
                             <?php foreach ($expensesCategories as $expenseCategory) {
                                 echo '<option value="' . ($expenseCategory['name']) . '">' . $expenseCategory['name'] . '</option>';
                             } ?>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-floating my-4">
                         <select id="categorySelect" class="form-control" name="payMethod">
-                            < <option value=""><?php echo e($oldFormData['payMethod'] ?? '-- Wybierz kategorię --'); ?></option>
+                            < <option value="<?php echo e($expense['payment'] ?? ''); ?>"><?php echo e($expense['payment'] ?? '-- Wybierz kategorię --'); ?></option>
                                 <?php foreach ($expensesPayments as $expensesPayment) {
                                     echo '<option value="' . ($expensesPayment['name']) . '">' . $expensesPayment['name'] . '</option>';
                                 } ?>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-floating my-4">
                         <input
-                            value="<?php echo e($oldFormData['comment'] ?? ''); ?>"
+                            value="<?php echo e($expense['expense_comment']); ?>"
                             name="comment"
                             type="text"
                             class="form-control"

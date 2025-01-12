@@ -40,7 +40,22 @@ class ExpenseController
         redirectTo('/');
     }
 
-    public function editView (array $params) {
-        dd($params);
+    public function editView(array $params)
+    {
+        $expensesCategories = $this->expenseService->selectCategory();
+
+        $expensesPayments = $this->expenseService->selectPayment();
+
+        $expense = $this->expenseService->getUserExpense($params['expense']);
+
+        if (!$expense) {
+            redirectTo('/');
+        }
+
+        echo $this->view->render('transactions/expenseEdit.php', [
+            'expense' => $expense,
+            'expensesCategories' => $expensesCategories,
+            'expensesPayments' => $expensesPayments
+        ]);
     }
 }
