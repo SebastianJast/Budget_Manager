@@ -62,7 +62,7 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div>q§
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">
@@ -70,12 +70,13 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
-          <?php foreach ($expenses as $expense) : ?>
+            <?php foreach ($expenses as $expense) : ?>
               <li class="fw-bold py-2"><?php echo e($expense['category']); ?> : <?php echo e($expense['amount']); ?></li>
               <li>
                 <?php echo ($expense['date_of_expense']); ?> <?php echo e($expense['expense_comment']); ?>
               </li>
               <li class="d-inline-flex align-items-center">
+                <a href="/expense/<?php echo e($expense['id']); ?>">
                   <img
                     class="pen"
                     src="../fonts/pen-solid.svg"

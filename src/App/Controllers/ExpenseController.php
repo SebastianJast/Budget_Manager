@@ -39,4 +39,8 @@ class ExpenseController
 
         redirectTo('/');
     }
+
+    public function editView (array $params) {
+        dd($params);
+    }
 }
