@@ -108,7 +108,7 @@
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
-            <li class="fw-bold py-2">Bilans: 5900</li>
+            <li class="fw-bold py-2">Bilans: <?php echo e($balance); ?></li>
             <li class="text-success fw-bold">
               Gratulacje. Świetnie zarządzasz finansami!
             </li>
