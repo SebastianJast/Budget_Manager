@@ -7,18 +7,20 @@
   </p>
   <div class="collapse text-center col-xxl-8 col-md-6 col-sm-12 mx-auto" id="collapseExample">
     <div class="card card-body">
-      <a class="text-decoration-none text-dark active" href="#">Bieżący miesiąc</a>
-      <a class="text-decoration-none text-dark active" href="#">Poprzedni miesiąc</a>
-      <a class="text-decoration-none text-dark active" href="#">Bieżący rok</a>
-      <a
-        class="text-decoration-none text-dark active"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-        href="#">Niestandardowy</a>
+      <form action="/" method="GET">
+        <button type="submit" class="dropdown-item text-decoration-none text-dark active" name="currentMonth" value="currentMonth">Bieżący
+          miesiąc</button>
+        <button type="submit" class="dropdown-item text-decoration-none text-dark active" name="previousMonth" value="previousMonth">Poprzedni
+          miesiąc</button>
+        <button type="submit" class="dropdown-item text-decoration-none text-dark active" name="currentYear" value="currentYear">Bieżący
+          rok</button>
+        <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          href="#">Niestandardowy</a>
+      </form>
     </div>
   </div>
   <h2 class="display-5 fw-bold text-white lh-1 mt-4 text-center mb-4">
-    Bieżacy miesiąc
+    <?php echo e($selectedTitle); ?>
   </h2>
   <div
     class="row d-flex flex-column flex-lg-row justify-content-center align-items-center gap-4 row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -29,55 +31,38 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
-            <li class="fw-bold py-2">Wynagrodzenie: 5000</li>
-            <li>
-              2024-09-28 5000 wypłata
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Sprzedaż na Allegro: 2000</li>
-            <li>
-              2024-09-28 2000 Rower
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Odsetki bankowe: 300</li>
-            <li>
-              2024-09-28 300 lokata
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
+            <?php foreach ($incomes as $income) : ?>
+              <li class="fw-bold py-2"><?php echo e($income['category']); ?> : <?php echo e($income['amount']); ?></li>
+              <li>
+                <?php echo ($income['date_of_income']); ?> <?php echo e($income['income_comment']); ?>
+              </li>
+              <li class="d-inline-flex align-items-center">
+                <a href="/income/<?php echo e($income['id']); ?>">
+                  <img
+                    class="pen"
+                    src="../fonts/pen-solid.svg"
+                    alt="pen"
+                    height="15"
+                    width="15" />
+                </a>
+                <form action="/income/<?php echo e($income['id']); ?>" method="POST">
+                  <input type="hidden" name="_METHOD" value="DELETE">
+                  <?php include $this->resolve("partials/_csrf.php"); ?>
+                  <button type="submit" class="btn btn-link">
+                    <img
+                      class="trash"
+                      src="../fonts/trash-can-solid.svg"
+                      alt="trash"
+                      height="15"
+                      width="15" />
+                  </button>
+                </form>
+              </li>
+            <?php endforeach; ?>
           </ul>
         </div>
       </div>
-    </div>
+    </div>q§
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">
@@ -85,66 +70,34 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
-            <li class="fw-bold py-2">Ubranie: 500</li>
-            <li>
-              2024-09-28 500 kurtka zimowa
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Wycieczka: 400</li>
-            <li>
-              2024-09-28 400
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Jedzenie: 300</li>
-            <li>
-              2024-09-28 300
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
-            <li class="fw-bold py-2">Rozrywka: 200</li>
-            <li>
-              2024-09-28 200 Wyjazd na narty
-              <span><img
-                  class="pen"
-                  src="../fonts/pen-solid.svg"
-                  alt="pen"
-                  height="15"
-                  width="15" /></span><span><img
-                  class="trash"
-                  src="../fonts/trash-can-solid.svg"
-                  alt="trash"
-                  height="15"
-                  width="15" /></span>
-            </li>
+            <?php foreach ($expenses as $expense) : ?>
+              <li class="fw-bold py-2"><?php echo e($expense['category']); ?> : <?php echo e($expense['amount']); ?></li>
+              <li>
+                <?php echo ($expense['date_of_expense']); ?> <?php echo e($expense['expense_comment']); ?>
+              </li>
+              <li class="d-inline-flex align-items-center">
+                <a href="/expense/<?php echo e($expense['id']); ?>">
+                  <img
+                    class="pen"
+                    src="../fonts/pen-solid.svg"
+                    alt="pen"
+                    height="15"
+                    width="15" />
+                </a>
+                <form action="/expense/<?php echo e($expense['id']); ?>" method="POST">
+                  <input type="hidden" name="_METHOD" value="DELETE">
+                  <?php include $this->resolve("partials/_csrf.php"); ?>
+                  <button type="submit" class="btn btn-link">
+                    <img
+                      class="trash"
+                      src="../fonts/trash-can-solid.svg"
+                      alt="trash"
+                      height="15"
+                      width="15" />
+                  </button>
+                </form>
+              </li>
+            <?php endforeach; ?>
           </ul>
         </div>
       </div>
@@ -185,35 +138,28 @@
             data-bs-dismiss="modal"
             aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <p class="my-2">Zakres od:</p>
-          <div class="form-floating my-1">
-            <input
-              type="date"
-              class="form-control"
-              id="dateInput"
-              required />
-            <label for="dateInput">Data</label>
+        <form method="GET">
+          <div class="modal-body">
+            <p class="my-2">Zakres od:</p>
+            <div class="form-floating my-1">
+              <input type="date" class="form-control" id="dateInput" name="rangeFrom" required />
+              <label for="dateInput">Data</label>
+            </div>
+            <p class="my-2">Zakres do:</p>
+            <div class="form-floating my-1">
+              <input type="date" class="form-control" id="dateInput" name="rangeTo" required />
+              <label for="dateInput">Data</label>
+            </div>
           </div>
-          <p class="my-2">Zakres do:</p>
-          <div class="form-floating my-1">
-            <input
-              type="date"
-              class="form-control"
-              id="dateInput"
-              required />
-            <label for="dateInput">Data</label>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary" name="submitDate">
+              Ok
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal">
-            Close
-          </button>
-          <button type="button" class="btn btn-primary">Ok</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>

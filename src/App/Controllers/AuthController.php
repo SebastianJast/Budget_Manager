@@ -24,6 +24,8 @@ class AuthController
 
         $this->userService->create($_POST);
 
+        $this->userService->copyDefaultsToUsers($_POST);
+
         redirectTo('/');
     }
 

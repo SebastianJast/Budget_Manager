@@ -43,6 +43,21 @@ class UserService
         $_SESSION['user'] = $this->db->id();
     }
 
+    public function copyDefaultsToUsers()
+    {
+        $table_users = array("incomes_category_assigned_to_users", "payment_methods_assigned_to_users", "expenses_category_assigned_to_users");
+        $table_default = array("incomes_category_default", "payment_methods_default", "expenses_category_default");
+
+        for ($i = 0; $i < count($table_default); $i++) {
+            $this->db->query(
+                "INSERT INTO {$table_users[$i]} (user_id, name) SELECT :user_id, name FROM {$table_default[$i]}",
+                [
+                    'user_id' => $_SESSION['user']
+                ]
+            );
+        }
+    }
+
     public function login(array $formData)
     {
         $user = $this->db->query("SELECT * FROM users WHERE email = :email", [
