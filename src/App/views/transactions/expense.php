@@ -47,10 +47,9 @@
                     <div class="form-floating my-4">
                         <select name="category" id="categorySelect" class="form-control">
                             <option value=""><?php echo e($oldFormData['category'] ?? '-- Wybierz kategorię --'); ?></option>
-                            <option value="wynagrodzenie">Wynagrodzenie</option>
-                            <option value="odsetki bankowe">Odsetki bankowe</option>
-                            <option value="sprzedaż na allegro">Sprzedaż na Allegro</option>
-                            <option value="inne przychody">Inne przychody</option>
+                            <?php foreach ($expensesCategories as $expenseCategory) {
+                                echo '<option value="' . ($expenseCategory['name']) . '">' . $expenseCategory['name'] . '</option>';
+                            } ?>
                         </select>
                         <label for="categorySelect">Kategoria</label>
                         <?php if (array_key_exists('category', $errors)) : ?>
@@ -61,7 +60,10 @@
                     </div>
                     <div class="form-floating my-4">
                         <select id="categorySelect" class="form-control" name="payMethod">
-                            <option value=""><?php echo e($oldFormData['payMethod'] ?? '-- Wybierz kategorię --'); ?></option>
+                            < <option value=""><?php echo e($oldFormData['payMethod'] ?? '-- Wybierz kategorię --'); ?></option>
+                                <?php foreach ($expensesPayments as $expensesPayment) {
+                                    echo '<option value="' . ($expensesPayment['name']) . '">' . $expensesPayment['name'] . '</option>';
+                                } ?>
                         </select>
                         <label for="categorySelect">Metoda płatności</label>
                         <?php if (array_key_exists('category', $errors)) : ?>
