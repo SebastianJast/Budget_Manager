@@ -109,9 +109,13 @@
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
             <li class="fw-bold py-2">Bilans: <?php echo e($balance); ?></li>
-            <li class="text-success fw-bold">
-              Gratulacje. Świetnie zarządzasz finansami!
-            </li>
+            <?php if($balance > 0): ?>
+            <li class="text-success fw-bold"> Gratulacje. Świetnie zarządzasz finansami! </li>
+            <?php elseif ($balance == 0): ?>
+            <li class="text-warning fw-bold"> Bilans wynosi zero - warto przemyśleć oszczędności. </li>
+            <?php else: ?>
+            <li class="text-danger fw-bold"> Ostrożnie! Przekroczyłeś budżet – czas na oszczędności </li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>
