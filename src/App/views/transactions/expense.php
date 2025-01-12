@@ -60,6 +60,17 @@
                         <?php endif; ?>
                     </div>
                     <div class="form-floating my-4">
+                        <select id="categorySelect" class="form-control" name="payMethod">
+                            <option value=""><?php echo e($oldFormData['payMethod'] ?? '-- Wybierz kategorię --'); ?></option>
+                        </select>
+                        <label for="categorySelect">Metoda płatności</label>
+                        <?php if (array_key_exists('category', $errors)) : ?>
+                            <div class="mt-1 text-danger">
+                                <?php echo e($errors['category'][0]); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-floating my-4">
                         <input
                             value="<?php echo e($oldFormData['comment'] ?? ''); ?>"
                             name="comment"
