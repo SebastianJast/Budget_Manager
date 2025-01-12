@@ -137,4 +137,15 @@ class ExpenseService
             ]
         );
     }
+
+    public function delete(int $id)
+    {
+        $this->db->query(
+            "DELETE FROM expenses WHERE id = :id AND user_id = :user_id",
+            [
+                'id' => $id,
+                'user_id' => $_SESSION['user']
+            ]
+        );
+    }
 }

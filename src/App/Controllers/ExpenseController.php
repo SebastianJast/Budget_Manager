@@ -81,6 +81,8 @@ class ExpenseController
 
     public function delete(array $params)
     {
-        dd($params);
+        $this->expenseService->delete((int) $params['expense']);
+
+        redirectTo('');
     }
 }
