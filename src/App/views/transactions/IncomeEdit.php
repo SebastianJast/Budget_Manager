@@ -14,7 +14,7 @@
             <div class="container col-12 col-sm-12 col-lg-6">
                 <form method="POST" class="w-100">
                     <?php include $this->resolve("partials/_csrf.php"); ?>
-                    <h2 class="h1 mb-3 fw-bold text-white">Wprowadź przychód</h2>
+                    <h2 class="h1 mb-3 fw-bold text-white">Edycja przychodu</h2>
                     <div class="form-floating my-4">
                         <input
                             value="<?php echo e($income['amount']); ?>"
