@@ -148,4 +148,41 @@ class ExpenseService
             ]
         );
     }
+
+    public function getExpenseSumByCategory($firstDayMonth, $lastDayMonth)
+    {
+        $rows = $this->db->query(
+            "SELECT expenses_category_assigned_to_users.name, SUM(expenses.amount) AS 'expensesSUM' FROM expenses
+            INNER JOIN expenses_category_assigned_to_users ON expenses_category_assigned_to_users.user_id = expenses.user_id
+            WHERE expenses.expense_category_assigned_to_user_id = expenses_category_assigned_to_users.id 
+            AND expenses.date_of_expense BETWEEN :first_day_month AND :last_day_month
+            AND expenses.user_id = :user_id
+            GROUP BY expenses.expense_category_assigned_to_user_id
+            ORDER BY expensesSUM DESC",
+            [
+                'user_id' => $_SESSION['user'],
+                'first_day_month' => $firstDayMonth,
+                'last_day_month' => $lastDayMonth
+            ]
+        )->findAll();
+
+        return $rows;
+    }
+
+    public function getExpensesChartData($firstDayMonth, $lastDayMonth)
+    {
+        $rows = $this->getExpenseSumByCategory($firstDayMonth, $lastDayMonth);
+
+        $dataPoints = array();
+
+        if (count($rows) > 0) {
+            foreach ($rows as $row) {
+                $dataPoints[] = array("label" => $row['name'], "y" => $row['expensesSUM']);
+            }
+        } else {
+            $dataPoints[] = array("label" => 'Zero expanses', "y" => 100);
+        }
+
+        return $dataPoints;
+    }
 }

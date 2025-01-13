@@ -21,6 +21,17 @@ class HomeController
 
         $balance = $this->transactionsService->transactionsBalance($firstDayMonth, $lastDayMonth);
 
-        echo $this->view->render("/index.php", ['incomes' => $incomes, 'expenses' => $expenses, 'selectedTitle' => $selectedTitle, 'balance' => $balance]);
+        $dataPoints = $this->expenseService->getExpensesChartData($firstDayMonth, $lastDayMonth);
+
+        echo $this->view->render(
+            "/index.php",
+            [
+                'incomes' => $incomes,
+                'expenses' => $expenses,
+                'selectedTitle' => $selectedTitle,
+                'balance' => $balance,
+                'dataPoints' => $dataPoints
+            ]
+        );
     }
 }

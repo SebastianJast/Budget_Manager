@@ -1,4 +1,5 @@
 <?php include $this->resolve("partials/_header.php") ?>
+<?php include $this->resolve("partials/_expense_chart.php") ?>
 <main>
   <p class="d-flex justify-content-center">
     <a class="btn btn-success  mt-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
