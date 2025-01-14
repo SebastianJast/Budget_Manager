@@ -88,7 +88,7 @@ p<?php include $this->resolve("partials/_header.php") ?>
                         <?php endif; ?>
                     </div>
                     <div class="container d-flex gap-5 px-0">
-                        <a href="/" class="btn btn-danger w-100 py-3 text-white">Anuluj</a>
+                        <a href="/balance" class="btn btn-danger w-100 py-3 text-white">Anuluj</a>
                         <button class="btn btn-success w-100 py-3 text-white" type="submit">Zatwierdź</button>
                     </div>
                 </form>

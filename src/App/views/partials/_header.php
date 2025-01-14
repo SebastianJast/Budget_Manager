@@ -46,7 +46,7 @@
                                 <a href="/expense" class="nav-link link-light active">Dodaj wydatek</a>
                             </li>
                             <li class="nav-item px-4">
-                                <a href="/" class="nav-link link-light active">Przeglądaj bilans</a>
+                                <a href="/balance" class="nav-link link-light active">Przeglądaj bilans</a>
                             </li>
                             <li class="nav-item px-4">
                                 <a href="#" class="nav-link link-light active">Ustawienia</a>

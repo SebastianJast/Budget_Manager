@@ -37,7 +37,7 @@ class ExpenseController
 
         $this->expenseService->create($_POST, $idCategory, $idPayment);
 
-        redirectTo('/');
+        redirectTo('/balance');
     }
 
     public function editView(array $params)
@@ -49,7 +49,7 @@ class ExpenseController
         $expense = $this->expenseService->getUserExpense($params['expense']);
 
         if (!$expense) {
-            redirectTo('/');
+            redirectTo('/balance');
         }
 
         echo $this->view->render('transactions/expenseEdit.php', [
@@ -64,7 +64,7 @@ class ExpenseController
         $expense = $this->expenseService->getUserExpense($params['expense']);
 
         if (!$expense) {
-            redirectTo('/');
+            redirectTo('/balance');
         }
 
         $this->validatorService->validateExpense($_POST);
@@ -76,13 +76,13 @@ class ExpenseController
         $this->expenseService->update($_POST, $expense['id'], $idCategory, $idPayment);
 
         // redirectTo($_SERVER['HTTP_REFERER']);
-        redirectTo('/');
+        redirectTo('/balance');
     }
 
     public function delete(array $params)
     {
         $this->expenseService->delete((int) $params['expense']);
 
-        redirectTo('/');
+        redirectTo('/balance');
     }
 }

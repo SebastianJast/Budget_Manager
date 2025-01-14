@@ -1,172 +1,66 @@
-<?php include $this->resolve("partials/_header.php") ?>
-<?php include $this->resolve("partials/_expense_chart.php") ?>
-<main>
-  <p class="d-flex justify-content-center">
-    <a class="btn btn-success  mt-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      Wybierz okres
-    </a>
-  </p>
-  <div class="collapse text-center col-xxl-8 col-md-6 col-sm-12 mx-auto" id="collapseExample">
-    <div class="card card-body">
-      <form action="/" method="GET">
-        <button type="submit" class="dropdown-item text-decoration-none text-dark active" name="currentMonth" value="currentMonth">Bieżący
-          miesiąc</button>
-        <button type="submit" class="dropdown-item text-decoration-none text-dark active" name="previousMonth" value="previousMonth">Poprzedni
-          miesiąc</button>
-        <button type="submit" class="dropdown-item text-decoration-none text-dark active" name="currentYear" value="currentYear">Bieżący
-          rok</button>
-        <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          href="#">Niestandardowy</a>
-      </form>
-    </div>
-  </div>
-  <h2 class="display-5 fw-bold text-white lh-1 mt-4 text-center mb-4">
-    <?php echo e($selectedTitle); ?>
-  </h2>
-  <div
-    class="row d-flex flex-column flex-lg-row justify-content-center align-items-center gap-4 row-cols-1 row-cols-md-3 mb-3 text-center">
-    <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm">
-        <div class="card-header py-3">
-          <h3 class="my-0 fw-normal">Przychody</h3>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><?php echo e($title); ?> - Budget Manager</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="/assets/main.css" />
+</head>
+
+<body>
+    <header>
+        <div class="container col-xxl-10 d-flex justify-content-lg-start">
+            <h1 class="display-1 fw-bold text-white lh-1 mt-4">Budget Manager</h1>
         </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-1 mb-4">
-            <?php foreach ($incomes as $income) : ?>
-              <li class="fw-bold py-2"><?php echo e($income['category']); ?> : <?php echo e($income['amount']); ?></li>
-              <li>
-                <?php echo ($income['date_of_income']); ?> <?php echo e($income['income_comment']); ?>
-              </li>
-              <li class="d-inline-flex align-items-center">
-                <a href="/income/<?php echo e($income['id']); ?>">
-                  <img
-                    class="pen"
-                    src="../fonts/pen-solid.svg"
-                    alt="pen"
-                    height="15"
-                    width="15" />
-                </a>
-                <form action="/income/<?php echo e($income['id']); ?>" method="POST">
-                  <input type="hidden" name="_METHOD" value="DELETE">
-                  <?php include $this->resolve("partials/_csrf.php"); ?>
-                  <button type="submit" class="btn btn-link">
+    </header>
+    <main>
+        <div class="container col-xxl-10 px-4 py-1">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-12 col-sm-12 col-lg-6">
                     <img
-                      class="trash"
-                      src="../fonts/trash-can-solid.svg"
-                      alt="trash"
-                      height="15"
-                      width="15" />
-                  </button>
-                </form>
-              </li>
-            <?php endforeach; ?>
-          </ul>
-        </div>
-      </div>
-    </div>q§
-    <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm">
-        <div class="card-header py-3">
-          <h3 class="my-0 fw-normal">Wydatki</h3>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-1 mb-4">
-            <?php foreach ($expenses as $expense) : ?>
-              <li class="fw-bold py-2"><?php echo e($expense['category']); ?> : <?php echo e($expense['amount']); ?></li>
-              <li>
-                <?php echo ($expense['date_of_expense']); ?> <?php echo e($expense['expense_comment']); ?>
-              </li>
-              <li class="d-inline-flex align-items-center">
-                <a href="/expense/<?php echo e($expense['id']); ?>">
-                  <img
-                    class="pen"
-                    src="../fonts/pen-solid.svg"
-                    alt="pen"
-                    height="15"
-                    width="15" />
-                </a>
-                <form action="/expense/<?php echo e($expense['id']); ?>" method="POST">
-                  <input type="hidden" name="_METHOD" value="DELETE">
-                  <?php include $this->resolve("partials/_csrf.php"); ?>
-                  <button type="submit" class="btn btn-link">
-                    <img
-                      class="trash"
-                      src="../fonts/trash-can-solid.svg"
-                      alt="trash"
-                      height="15"
-                      width="15" />
-                  </button>
-                </form>
-              </li>
-            <?php endforeach; ?>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="d-flex justify-content-center text-center">
-    <div class="col-xxl-8 col-md-8 col-sm-12 mx-lg-auto">
-      <div class="card mb-4 rounded-3 shadow-sm">
-        <div class="card-body">
-          <ul class="list-unstyled mt-1 mb-4">
-            <li class="fw-bold py-2">Bilans: <?php echo e($balance); ?></li>
-            <?php if($balance > 0): ?>
-            <li class="text-success fw-bold"> Gratulacje. Świetnie zarządzasz finansami! </li>
-            <?php elseif ($balance == 0): ?>
-            <li class="text-warning fw-bold"> Bilans wynosi zero - warto przemyśleć oszczędności. </li>
-            <?php else: ?>
-            <li class="text-danger fw-bold"> Ostrożnie! Przekroczyłeś budżet – czas na oszczędności </li>
-            <?php endif; ?>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mx-auto col-xxl-8 col-md-8 col-sm-12">
-    <div id="chartContainer" style="height: 300px; width: 100%"></div>
-  </div>
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            Wybierz zakres dat:
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"></button>
-        </div>
-        <form method="GET">
-          <div class="modal-body">
-            <p class="my-2">Zakres od:</p>
-            <div class="form-floating my-1">
-              <input type="date" class="form-control" id="dateInput" name="rangeFrom" required />
-              <label for="dateInput">Data</label>
+                        src="./images/budget.svg"
+                        class="d-block mx-lg-auto img-fluid"
+                        alt="Budget"
+                        width="700"
+                        height="500"
+                        loading="lazy" />
+                </div>
+                <div class="col-lg-6">
+                    <p class="lead text-white">
+                        Masz ciągle problemy finasowe? Nie wiesz ile wydałeś i na co
+                        wydałeś? Ta aplikacja jest właśnie dla Ciebie! Dzięki aplikacji
+                        Budget Manager będiesz mógł nareszcie kontrolować swoje wydatki.
+                        Wystarczy tylko dokonać darmowej rejestracji i zalogować się na
+                        wybrane konto.
+                    </p>
+                    <div class="mt-2 border border-white p-1">
+                        <p class="lead text-white"><span class="fw-bold">Krok1: </span>Załóż konto i dołącz do grona użytkowników</p>
+                    </div>
+                    <div class="mt-2 border border-white p-1">
+                        <p class="lead text-white"><span class="fw-bold">Krok2: </span>Dodaj swoje przychody oraz wydatki do aplikacji, a następnie sprawdź ich bilans</p>
+                    </div>
+                    <div class="mt-2 border border-white p-1">
+                        <p class="lead text-white"><span class="fw-bold">Krok3: </span>Obserwuj gromadzone oszczędności lub dowiedz się, czy znajdujesz się pod kreską</p>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a type="button" class="btn btn-primary btn-lg px-4 me-md-2 mt-4 btn-register" href="/register">
+                            Rejestracja
+                        </a>
+                        <a
+                            type="button"
+                            class="btn btn-outline-secondary btn-lg px-3 mt-4"
+                            href="/login">
+                            Logowanie
+                        </a>
+                    </div>
+                </div>
             </div>
-            <p class="my-2">Zakres do:</p>
-            <div class="form-floating my-1">
-              <input type="date" class="form-control" id="dateInput" name="rangeTo" required />
-              <label for="dateInput">Data</label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Close
-            </button>
-            <button type="submit" class="btn btn-primary" name="submitDate">
-              Ok
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</main>
-<?php include $this->resolve("partials/_footer.php") ?>
+        </div>
+    </main>
+    <?php include $this->resolve("partials/_footer.php") ?>
