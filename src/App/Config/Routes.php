@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Config;
 
 use Framework\App;
-use App\Controllers\{AuthController, HomeController, MainController, IncomeController, ExpenseController};
+use App\Controllers\{AuthController, HomeController, MainController, IncomeController, ExpenseController, ErrorController};
 use App\Middleware\{AuthRequiredMiddleware, GuestOnlyMiddleware};
 
 function registerRoutes(App $app)
@@ -27,4 +27,6 @@ function registerRoutes(App $app)
     $app->get('/expense/{expense}', [ExpenseController::class, 'editView']);
     $app->post('/expense/{expense}', [ExpenseController::class, 'edit']);
     $app->delete('/expense/{expense}', [ExpenseController::class, 'delete']);
+
+    $app->setErrorHandler([ErrorController::class, 'notFound']);
 }
