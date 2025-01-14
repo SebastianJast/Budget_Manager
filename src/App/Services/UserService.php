@@ -103,4 +103,14 @@ class UserService
             setcookie('password', $formData['password'], 30);
         }
     }
+
+    public function userName()
+    {
+        return $this->db->query(
+            "SELECT users.username from users WHERE id = :id",
+            [
+                'id' => $_SESSION['user']
+            ]
+        )->find();
+    }
 }
