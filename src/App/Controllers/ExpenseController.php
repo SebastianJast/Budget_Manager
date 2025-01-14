@@ -83,6 +83,6 @@ class ExpenseController
     {
         $this->expenseService->delete((int) $params['expense']);
 
-        redirectTo('');
+        redirectTo('/');
     }
 }
