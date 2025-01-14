@@ -13,12 +13,25 @@ class HomeController
 
     public function home()
     {
-        $transactions = $this->transactionsService->setTransactionsLabels($_GET);
+        [$selectedTitle, $firstDayMonth, $lastDayMonth] = $this->transactionsService->setTransactionsLabels($_GET);
 
-        $incomes = $this->incomeService->getUserIncomes($transactions[1], $transactions[2]);
+        $incomes = $this->incomeService->getUserIncomes($firstDayMonth, $lastDayMonth);
 
-        $expenses = $this->expenseService->getUserExpenses($transactions[1], $transactions[2]);
+        $expenses = $this->expenseService->getUserExpenses($firstDayMonth, $lastDayMonth);
 
-        echo $this->view->render("/index.php", ['incomes' => $incomes, 'expenses' => $expenses, 'selectedTitle' => $transactions[0]]);
+        $balance = $this->transactionsService->transactionsBalance($firstDayMonth, $lastDayMonth);
+
+        $dataPoints = $this->expenseService->getExpensesChartData($firstDayMonth, $lastDayMonth);
+
+        echo $this->view->render(
+            "/index.php",
+            [
+                'incomes' => $incomes,
+                'expenses' => $expenses,
+                'selectedTitle' => $selectedTitle,
+                'balance' => $balance,
+                'dataPoints' => $dataPoints
+            ]
+        );
     }
 }

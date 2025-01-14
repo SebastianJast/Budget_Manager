@@ -1,4 +1,5 @@
 <?php include $this->resolve("partials/_header.php") ?>
+<?php include $this->resolve("partials/_expense_chart.php") ?>
 <main>
   <p class="d-flex justify-content-center">
     <a class="btn btn-success  mt-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -108,10 +109,14 @@
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
-            <li class="fw-bold py-2">Bilans: 5900</li>
-            <li class="text-success fw-bold">
-              Gratulacje. Świetnie zarządzasz finansami!
-            </li>
+            <li class="fw-bold py-2">Bilans: <?php echo e($balance); ?></li>
+            <?php if($balance > 0): ?>
+            <li class="text-success fw-bold"> Gratulacje. Świetnie zarządzasz finansami! </li>
+            <?php elseif ($balance == 0): ?>
+            <li class="text-warning fw-bold"> Bilans wynosi zero - warto przemyśleć oszczędności. </li>
+            <?php else: ?>
+            <li class="text-danger fw-bold"> Ostrożnie! Przekroczyłeś budżet – czas na oszczędności </li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>

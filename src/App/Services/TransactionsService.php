@@ -33,4 +33,35 @@ class TransactionsService
 
         return [$selectedTitle, $firstDayMonth, $lastDayMonth];
     }
+
+    public function transactionsBalance($firstDayMonth, $lastDayMonth)
+    {
+        $result = $this->db->query(
+            "SELECT incomes.user_id, SUM(incomes.amount) AS 'incomesSUM' FROM incomes
+            WHERE incomes.date_of_income BETWEEN :first_day_month AND :last_day_month AND incomes.user_id = :user_id",
+            [
+                'user_id' => $_SESSION['user'],
+                'first_day_month' => $firstDayMonth,
+                'last_day_month' => $lastDayMonth
+            ]
+        )->find();
+
+        $incomesSum = $result['incomesSUM'];
+
+        $result = $this->db->query(
+            "SELECT expenses.user_id, SUM(expenses.amount) AS 'expensesSUM' FROM expenses
+            WHERE expenses.date_of_expense BETWEEN :first_day_month AND :last_day_month AND expenses.user_id = :user_id",
+            [
+                'user_id' => $_SESSION['user'],
+                'first_day_month' => $firstDayMonth,
+                'last_day_month' => $lastDayMonth
+            ]
+        )->find();
+
+        $expensesSum = $result['expensesSUM'];
+
+        $balance = $incomesSum - $expensesSum;
+
+        return $balance;
+    }
 }
