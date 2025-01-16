@@ -5,7 +5,7 @@
             animationEnabled: true,
             exportEnabled: true,
             title: {
-                text: "Twoje wydatki z wybranego okresu"
+                text: "<?php echo e($selectedTitle) ;?>"
             },
             subtitles: [{
                 text: "Używana waluta (PLN)"

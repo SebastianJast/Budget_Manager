@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Config;
 
 use Framework\App;
-use App\Controllers\{AuthController, HomeController, MainController, IncomeController, ExpenseController};
+use App\Controllers\{AuthController, HomeController, MainController, IncomeController, ExpenseController, ErrorController, WelcomeController};
 use App\Middleware\{AuthRequiredMiddleware, GuestOnlyMiddleware};
 
 function registerRoutes(App $app)
 {
-    $app->get('/', [HomeController::class, 'home'])->add(AuthRequiredMiddleware::class);
+    $app->get('/', [WelcomeController::class, 'welcome'])->add(GuestOnlyMiddleware::class);
+    $app->get('/balance', [HomeController::class, 'home'])->add(AuthRequiredMiddleware::class);
     $app->get('/main', [MainController::class, 'main'])->add(AuthRequiredMiddleware::class);
     $app->get('/register', [AuthController::class, 'registerView'])->add(GuestOnlyMiddleware::class);
     $app->post('/register', [AuthController::class, 'register'])->add(GuestOnlyMiddleware::class);
@@ -27,4 +28,6 @@ function registerRoutes(App $app)
     $app->get('/expense/{expense}', [ExpenseController::class, 'editView']);
     $app->post('/expense/{expense}', [ExpenseController::class, 'edit']);
     $app->delete('/expense/{expense}', [ExpenseController::class, 'delete']);
+
+    $app->setErrorHandler([ErrorController::class, 'notFound']);
 }

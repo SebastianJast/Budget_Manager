@@ -26,7 +26,7 @@ class IncomeController
 
         $this->incomeService->create($_POST, $idCategory);
 
-        redirectTo('/');
+        redirectTo('/balance');
     }
 
     public function editView(array $params)
@@ -36,7 +36,7 @@ class IncomeController
         $income = $this->incomeService->getUserIncome($params['income']);
 
         if (!$income) {
-            redirectTo('/');
+            redirectTo('/balance');
         }
 
         echo $this->view->render('transactions/IncomeEdit.php', [
@@ -50,7 +50,7 @@ class IncomeController
         $income = $this->incomeService->getUserIncome($params['income']);
 
         if (!$income) {
-            redirectTo('/');
+            redirectTo('/balance');
         }
 
         $this->validatorService->validateIncome($_POST);
@@ -60,13 +60,13 @@ class IncomeController
         $this->incomeService->update($_POST, $income['id'], $idCategory);
 
         // redirectTo($_SERVER['HTTP_REFERER']);
-        redirectTo('/');
+        redirectTo('/balance');
     }
 
     public function delete(array $params)
     {
         $this->incomeService->delete((int) $params['income']);
 
-        redirectTo('');
+        redirectTo('/balance');
     }
 }

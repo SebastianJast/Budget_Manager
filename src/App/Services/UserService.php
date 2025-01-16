@@ -77,9 +77,20 @@ class UserService
 
     public function logout()
     {
-        unset($_SESSION['user']);
+        // unset($_SESSION['user']);
+        session_destroy();
 
-        session_regenerate_id();
+        // session_regenerate_id();
+        $params = session_get_cookie_params();
+        setcookie(
+            'PHPSESSID',
+            '',
+            time() - 3600,
+            $params['path'],
+            $params['domain'],
+            $params['secure'],
+            $params['httponly']
+        );
     }
 
     public function handleRememberMe(array $formData)
@@ -91,5 +102,15 @@ class UserService
             setcookie('email', $formData['email'], 30);
             setcookie('password', $formData['password'], 30);
         }
+    }
+
+    public function userName()
+    {
+        return $this->db->query(
+            "SELECT users.username from users WHERE id = :id",
+            [
+                'id' => $_SESSION['user']
+            ]
+        )->find();
     }
 }

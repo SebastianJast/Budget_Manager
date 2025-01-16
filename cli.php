@@ -20,3 +20,6 @@ $db = new Database(
     $_ENV['DB_PASS']
 );
 
+$sqlFile = file_get_contents("./database.sql");
+
+$db->query($sqlFile);

@@ -5,19 +5,16 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use Framework\TemplateEngine;
-use App\Config\Paths;
+use App\Services\UserService;
 
 class MainController
 {
-    private TemplateEngine $view;
-
-    public function __construct()
-    {
-        $this->view = new TemplateEngine(Paths::VIEW);
-    }
+    public function __construct(private TemplateEngine $view, private UserService $userService) {}
 
     public function main()
     {
-        echo $this->view->render("/main.php", ['title' => 'Main page', 'dangerousData' => '<script>alert(123)</script>']);
+        $userName = $this->userService->userName();
+
+        echo $this->view->render("/main.php", ['title' => 'Main page', 'userName' => $userName['username']]);
     }
 }

@@ -24,7 +24,7 @@ class HomeController
         $dataPoints = $this->expenseService->getExpensesChartData($firstDayMonth, $lastDayMonth);
 
         echo $this->view->render(
-            "/index.php",
+            "/balance.php",
             [
                 'incomes' => $incomes,
                 'expenses' => $expenses,

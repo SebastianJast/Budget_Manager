@@ -26,7 +26,7 @@ class AuthController
 
         $this->userService->copyDefaultsToUsers($_POST);
 
-        redirectTo('/');
+        redirectTo('/main');
     }
 
     public function loginView()
@@ -42,7 +42,7 @@ class AuthController
 
         $this->userService->login($_POST);
 
-        redirectTo('/');
+        redirectTo('/main');
     }
 
     public function logout()
