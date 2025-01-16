@@ -59,16 +59,16 @@ p<?php include $this->resolve("partials/_header.php") ?>
                         <?php endif; ?>
                     </div>
                     <div class="form-floating my-4">
-                        <select id="categorySelect" class="form-control" name="payMethod">
+                        <select id="payMethodSelect" class="form-control" name="payMethod">
                             < <option value="<?php echo e($expense['payment'] ?? ''); ?>"><?php echo e($expense['payment'] ?? '-- Wybierz kategorię --'); ?></option>
                                 <?php foreach ($expensesPayments as $expensesPayment) {
                                     echo '<option value="' . ($expensesPayment['name']) . '">' . $expensesPayment['name'] . '</option>';
                                 } ?>
                         </select>
-                        <label for="categorySelect">Metoda płatności</label>
-                        <?php if (array_key_exists('category', $errors)) : ?>
+                        <label for="payMethodSelect">Metoda płatności</label>
+                        <?php if (array_key_exists('payMethod', $errors)) : ?>
                             <div class="mt-1 text-danger">
-                                <?php echo e($errors['category'][0]); ?>
+                                <?php echo e($errors['payMethod'][0]); ?>
                             </div>
                         <?php endif; ?>
                     </div>
