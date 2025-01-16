@@ -63,7 +63,7 @@
           </ul>
         </div>
       </div>
-    </div>q§
+    </div>
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">
