@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-floating my-4">
                         <select name="category" id="categorySelect" class="form-control">
-                            <option value=""><?php echo e($oldFormData['category'] ?? '-- Wybierz kategorię --'); ?></option>
+                            <option value="<?php echo e($oldFormData['category'] ?? ''); ?>"><?php echo e($oldFormData['category'] ?? '-- Wybierz kategorię --'); ?></option>
                             <?php foreach ($incomesCategories as $incomeCategory) {
                                 echo '<option value="' . ($incomeCategory['name']) . '">' . $incomeCategory['name'] . '</option>';
                             } ?>
