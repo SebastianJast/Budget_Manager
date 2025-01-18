@@ -29,6 +29,7 @@ function registerRoutes(App $app)
     $app->post('/expense/{expense}', [ExpenseController::class, 'edit']);
     $app->delete('/expense/{expense}', [ExpenseController::class, 'delete']);
     $app->get('/settings', [SettingsController::class, 'createView'])->add(AuthRequiredMiddleware::class);
+    $app->post('/settings', [SettingsController::class, 'edit'])->add(AuthRequiredMiddleware::class);
 
     $app->setErrorHandler([ErrorController::class, 'notFound']);
 }

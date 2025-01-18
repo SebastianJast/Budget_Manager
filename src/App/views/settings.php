@@ -71,18 +71,19 @@
                                 data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form method="GET">
+                        <form method="POST" action="/settings">
+                        <?php include $this->resolve("partials/_csrf.php"); ?>
                             <div class="modal-body">
                                 <div class="form-floating my-1">
-                                    <input type="text" class="form-control" id="textInput" name="" required />
+                                    <input type="text" class="form-control" id="textInput" name="newCategory" value="" required />
                                     <label for="textInput">Nazwa nowej kategorii</label>
                                 </div>
                             </div>
                             <div class="w-50 mx-auto">
                                 <?php foreach ($incomesCategories as $incomeCategory): ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $incomeCategory['name']; ?>" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
+                                        <input class="form-check-input" type="radio" name="idCategory" id="exampleRadios<?php echo $incomeCategory['id']; ?>" value="<?php echo $incomeCategory['id']; ?>">
+                                        <label class="form-check-label" for="exampleRadios<?php echo $incomeCategory['id']; ?>">
                                             <?php echo $incomeCategory['name']; ?>
                                         </label>
                                     </div>
@@ -92,7 +93,7 @@
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="submit" class="btn btn-primary" name="submitDate">
+                                <button type="submit" class="btn btn-primary">
                                     Ok
                                 </button>
                             </div>

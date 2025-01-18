@@ -12,7 +12,7 @@ class IncomeService
     public function selectCategory()
     {
         $incomesCategories = $this->db->query(
-            "SELECT name FROM incomes_category_assigned_to_users WHERE user_id = :user_id",
+            "SELECT name, id FROM incomes_category_assigned_to_users WHERE user_id = :user_id",
             [
                 'user_id' => $_SESSION['user'],
             ]
@@ -115,6 +115,19 @@ class IncomeService
             [
                 'id' => $id,
                 'user_id' => $_SESSION['user']
+            ]
+        );
+    }
+
+    public function updateCategory(array $formData)
+    {
+        $this->db->query(
+            "UPDATE incomes_category_assigned_to_users SET name = :name 
+            WHERE user_id = :user_id AND id = :id",
+            [
+                'id' => $formData['idCategory'],
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['newCategory']
             ]
         );
     }

@@ -17,4 +17,13 @@ class SettingsController
 
         echo $this->view->render("/settings.php", ['incomesCategories' => $incomesCategories]);
     }
+
+    public function edit()
+    {
+           $this->incomeService->updateCategory($_POST);
+
+           redirectTo('/settings');
+
+        // dd($_POST);
+    }
 }
