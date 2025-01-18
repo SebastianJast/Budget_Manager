@@ -49,7 +49,7 @@
                                 <a href="/balance" class="nav-link link-light active">Przeglądaj bilans</a>
                             </li>
                             <li class="nav-item px-4">
-                                <a href="#" class="nav-link link-light active">Ustawienia</a>
+                                <a href="/settings" class="nav-link link-light active">Ustawienia</a>
                             </li>
                             <li class="nav-item px-4">
                                 <a href="/logout" class="nav-link link-light active">Wyloguj się</a>
