@@ -38,14 +38,17 @@ class SettingsController
 
         $this->expenseService->updatePayment($_POST);
 
-        if(!empty($_POST['addIncomeCategory'])) {
+        if (!empty($_POST['addIncomeCategory'])) {
             $this->incomeService->addIncomeCategory($_POST);
         }
 
-        if(!empty($_POST['addExpenseCategory'])) {
+        if (!empty($_POST['addExpenseCategory'])) {
             $this->expenseService->addExpenseCategory($_POST);
         }
 
+        if (!empty($_POST['addPaymentMethod'])) {
+            $this->expenseService->addPayment($_POST);
+        }
 
         redirectTo('/settings');
     }

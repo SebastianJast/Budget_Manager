@@ -222,4 +222,15 @@ class ExpenseService
             ]
         );
     }
+
+    public function addPayment(array $formData)
+    {
+        $this->db->query(
+            "INSERT INTO payment_methods_assigned_to_users(user_id, name) VALUES(:user_id, :name)",
+            [
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['addPaymentMethod']
+            ]
+        );
+    }
 }
