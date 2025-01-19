@@ -37,7 +37,7 @@ class ExpenseService
     public function selectPayment()
     {
         $expensesPayments = $this->db->query(
-            "SELECT name FROM payment_methods_assigned_to_users WHERE user_id = :user_id",
+            "SELECT name, id FROM payment_methods_assigned_to_users WHERE user_id = :user_id",
             [
                 'user_id' => $_SESSION['user'],
             ]
@@ -195,6 +195,19 @@ class ExpenseService
                 'id' => $formData['idCategoryExpenses'],
                 'user_id' => $_SESSION['user'],
                 'name' => $formData['newCategoryExpenses']
+            ]
+        );
+    }
+
+    public function updatePayment(array $formData)
+    {
+        $this->db->query(
+            "UPDATE payment_methods_assigned_to_users SET name = :name 
+            WHERE user_id = :user_id AND id = :id",
+            [
+                'id' => $formData['idPayment'],
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['newPaymentMethod']
             ]
         );
     }

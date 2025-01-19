@@ -18,7 +18,16 @@ class SettingsController
 
         $expensesCategories = $this->expenseService->selectCategory();
 
-        echo $this->view->render("/settings.php", ['incomesCategories' => $incomesCategories, 'expensesCategories' => $expensesCategories]);
+        $expensesPayments = $this->expenseService->selectPayment();
+
+        echo $this->view->render(
+            "/settings.php",
+            [
+                'incomesCategories' => $incomesCategories,
+                'expensesCategories' => $expensesCategories,
+                'expensesPayments' => $expensesPayments
+            ]
+        );
     }
 
     public function edit()
@@ -26,6 +35,8 @@ class SettingsController
         $this->incomeService->updateCategory($_POST);
 
         $this->expenseService->updateCategory($_POST);
+
+        $this->expenseService->updatePayment($_POST);
 
         redirectTo('/settings');
     }
