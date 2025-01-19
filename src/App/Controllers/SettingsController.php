@@ -25,8 +25,8 @@ class SettingsController
     {
         $this->incomeService->updateCategory($_POST);
 
-        redirectTo('/settings');
+        $this->expenseService->updateCategory($_POST);
 
-        // dd($_POST);
+        redirectTo('/settings');
     }
 }
