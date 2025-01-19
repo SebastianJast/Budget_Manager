@@ -113,4 +113,23 @@ class UserService
             ]
         )->find();
     }
+
+    public function updateAccount(array $formData)
+    {
+        $password = password_hash($formData['password'], PASSWORD_BCRYPT, ['cost' => 12]);
+
+        $this->db->query(
+            "UPDATE users 
+            SET username = :username,
+            password = :password,
+            email = :email
+            WHERE id = :id",
+            [
+                'id' => $_SESSION['user'],
+                'username' => $formData['login'],
+                'password' => $password,
+                'email' => $formData['email']
+            ]
+        );
+    }
 }

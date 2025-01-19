@@ -22,5 +22,16 @@ class AccountController
     public function edit()
     {
         $this->validatorService->validateEditAccount($_POST);
+
+        $user = $this->userService->userName();
+
+        if ($user['email'] != $_POST['email']) {
+            $this->userService->isEmailTaker($_POST['email']);
+        }
+
+
+        $this->userService->updateAccount($_POST);
+
+        redirectTo("/settings");
     }
 }

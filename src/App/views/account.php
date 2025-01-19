@@ -37,7 +37,7 @@
                         <h2 class="h1 mb-3 fw-bold text-white">Edycja danych użytkownika</h2>
                         <div class="form-floating my-4">
                             <input
-                                value="<?php echo e($user['username']); ?>"
+                                value="<?php echo e($oldFormData['login'] ?? $user['username']); ?>"
                                 name="login"
                                 type="text"
                                 class="form-control"
@@ -52,13 +52,13 @@
                         </div>
                         <div class="form-floating">
                             <input
-                                value="<?php echo e($user['email']); ?>"
+                                value="<?php echo e($oldFormData['email'] ?? $user['email']); ?>"
                                 name="email"
                                 type="email"
                                 class="form-control"
-                                id="floatingPassword"
+                                id="floatingInput"
                                 placeholder="Password" />
-                            <label for="floatingPassword">Email</label>
+                            <label for="floatingInput">Email</label>
                             <?php if (array_key_exists('email', $errors)) : ?>
                                 <div class="mt-1 text-danger">
                                     <?php echo e($errors['email'][0]); ?>
