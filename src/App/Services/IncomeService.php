@@ -125,9 +125,9 @@ class IncomeService
             "UPDATE incomes_category_assigned_to_users SET name = :name 
             WHERE user_id = :user_id AND id = :id",
             [
-                'id' => $formData['idCategory'],
+                'id' => $formData['idCategoryIncomes'],
                 'user_id' => $_SESSION['user'],
-                'name' => $formData['newCategory']
+                'name' => $formData['newCategoryIncomes']
             ]
         );
     }
