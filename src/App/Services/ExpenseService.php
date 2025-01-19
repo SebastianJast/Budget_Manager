@@ -244,4 +244,15 @@ class ExpenseService
             ]
         );
     }
+
+    public function deletePayment(array $formData)
+    {
+        $this->db->query(
+            "DELETE FROM payment_methods_assigned_to_users WHERE id = :id AND user_id = :user_id",
+            [
+                'id' => $formData['deletePaymentMethod'],
+                'user_id' => $_SESSION['user']
+            ]
+        );
+    }
 }

@@ -58,6 +58,10 @@ class SettingsController
             $this->expenseService->deleteExpenseCategory($_POST);
         }
 
+        if (!empty($_POST['deletePaymentMethod'])) {
+            $this->expenseService->deletePayment($_POST);
+        }
+
         redirectTo('/settings');
     }
 }

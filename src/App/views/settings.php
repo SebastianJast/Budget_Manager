@@ -37,7 +37,7 @@
                         href="#">Przychody</a>
                     <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#deleteExpensesCategoryForm"
                         href="#">Wydatki</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#deletePaymentMethods"
                         href="#">Sposoby płatności</a>
                 </div>
                 <div class="card-header py-3">
@@ -387,6 +387,49 @@
                                         <input class="form-check-input" type="radio" name="deleteExpenseCategory" id="exampleRadios<?php echo e($expenseCategory['id']); ?>" value="<?php echo e($expenseCategory['id']); ?>">
                                         <label class="form-check-label" for="exampleRadios<?php echo e($expenseCategory['id']); ?>">
                                             <?php echo e($expenseCategory['name']); ?>
+                                        </label>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Ok
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- deletePaymentMethods -->
+            <div
+                class="modal fade"
+                id="deletePaymentMethods"
+                tabindex="-1"
+                aria-labelledby="deletePaymentMethodsLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header position-relative" style="height: 100px;">
+                            <h5 class="modal-title position-absolute start-50 top-50 translate-middle" id="deletePaymentMethodsLabel">
+                                Wybierz kategorię do usunięcia:
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close position-absolute top-0 end-0 me-2 mt-2"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="/settings">
+                            <?php include $this->resolve("partials/_csrf.php"); ?>
+                            <div class="w-50 mx-auto">
+                                <?php foreach ($expensesPayments as $expensesPayment): ?>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="deletePaymentMethod" id="exampleRadios<?php echo e($expensesPayment['id']); ?>" value="<?php echo e($expensesPayment['id']); ?>">
+                                        <label class="form-check-label" for="exampleRadios<?php echo e($expensesPayment['id']); ?>">
+                                            <?php echo e($expensesPayment['name']); ?>
                                         </label>
                                     </div>
                                 <?php endforeach; ?>
