@@ -33,7 +33,7 @@
                     <p class="my-0 fw-normal">Usuwanie kategorii</p>
                 </div>
                 <div class="card-body d-flex">
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#deleteIncomesCategoryForm"
                         href="#">Przychody</a>
                     <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         href="#">Wydatki</a>
@@ -317,5 +317,49 @@
                     </div>
                 </div>
             </div>
+              <!-- deleteIncomesCategoryForm -->
+              <div
+                class="modal fade"
+                id="deleteIncomesCategoryForm"
+                tabindex="-1"
+                aria-labelledby="deleteIncomesCategoryLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header position-relative" style="height: 100px;">
+                            <h5 class="modal-title position-absolute start-50 top-50 translate-middle" id="deleteIncomesCategoryLabel">
+                                Wybierz kategorię do usunięcia:
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close position-absolute top-0 end-0 me-2 mt-2"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="/settings">
+                            <?php include $this->resolve("partials/_csrf.php"); ?>
+                            <div class="w-50 mx-auto">
+                                <?php foreach ($incomesCategories as $incomeCategory): ?>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="deleteIncomeCategory" id="exampleRadios<?php echo e($incomeCategory['id']); ?>" value="<?php echo e($incomeCategory['id']); ?>">
+                                        <label class="form-check-label" for="exampleRadios<?php echo e($incomeCategory['id']); ?>">
+                                            <?php echo e($incomeCategory['name']); ?>
+                                        </label>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Ok
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
 </main>
 <?php include $this->resolve("partials/_footer.php") ?>

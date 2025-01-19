@@ -50,6 +50,10 @@ class SettingsController
             $this->expenseService->addPayment($_POST);
         }
 
+        if (!empty($_POST['deleteIncomeCategory'])) {
+            $this->incomeService->deleteIncomeCategory($_POST);
+        }
+
         redirectTo('/settings');
     }
 }

@@ -142,4 +142,15 @@ class IncomeService
             ]
         );
     }
+
+    public function deleteIncomeCategory(array $formData)
+    {
+        $this->db->query(
+            "DELETE FROM incomes_category_assigned_to_users WHERE id = :id AND user_id = :user_id",
+            [
+                'id' => $formData['deleteIncomeCategory'],
+                'user_id' => $_SESSION['user']
+            ]
+        );
+    }
 }
