@@ -11,7 +11,7 @@
                     <p class="my-0 fw-normal">Edycja nazwy kategorii</p>
                 </div>
                 <div class="card-body d-flex">
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#editIncomeCategoryForm"
+                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#editIncomesCategoryForm"
                         href="#">Przychody</a>
                     <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         href="#">Wydatki</a>
@@ -55,14 +55,14 @@
             </div>
             <div
                 class="modal fade"
-                id="editIncomeCategoryForm"
+                id="editIncomesCategoryForm"
                 tabindex="-1"
-                aria-labelledby="exampleModalLabel"
+                aria-labelledby="editIncomesCategoryLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header position-relative" style="height: 100px;">
-                            <h5 class="modal-title position-absolute start-50 top-50 translate-middle" id="exampleModalLabel">
+                            <h5 class="modal-title position-absolute start-50 top-50 translate-middle" id="editIncomesCategoryLabel">
                                 Wybierz kategorię do edycji i podaj nową nazwę:
                             </h5>
                             <button
@@ -82,9 +82,9 @@
                             <div class="w-50 mx-auto">
                                 <?php foreach ($incomesCategories as $incomeCategory): ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="idCategory" id="exampleRadios<?php echo $incomeCategory['id']; ?>" value="<?php echo $incomeCategory['id']; ?>">
-                                        <label class="form-check-label" for="exampleRadios<?php echo $incomeCategory['id']; ?>">
-                                            <?php echo $incomeCategory['name']; ?>
+                                        <input class="form-check-input" type="radio" name="idCategory" id="exampleRadios<?php echo e($incomeCategory['id']); ?>" value="<?php echo e($incomeCategory['id']); ?>">
+                                        <label class="form-check-label" for="exampleRadios<?php echo e($incomeCategory['id']); ?>">
+                                            <?php echo e($incomeCategory['name']); ?>
                                         </label>
                                     </div>
                                 <?php endforeach; ?>
