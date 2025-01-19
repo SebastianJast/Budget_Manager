@@ -24,7 +24,7 @@
                 <div class="card-body d-flex">
                     <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#addIncomesCategoryForm"
                         href="#">Przychody</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#addExpensesCategoryForm"
                         href="#">Wydatki</a>
                     <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         href="#">Sposoby płatności</a>
@@ -224,6 +224,45 @@
                             <div class="modal-body">
                                 <div class="form-floating my-1">
                                     <input type="text" class="form-control" id="textInput" name="addIncomeCategory" value="" required />
+                                    <label for="textInput">Nazwa nowej kategorii</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Ok
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- addExpensesCategoryForm -->
+            <div
+                class="modal fade"
+                id="addExpensesCategoryForm"
+                tabindex="-1"
+                aria-labelledby="addExpensesCategoryLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header position-relative" style="height: 100px;">
+                            <h5 class="modal-title position-absolute start-50 top-50 translate-middle" id="addExpensesCategoryLabel">
+                                Podaj nazwę nowej kategorii:
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close position-absolute top-0 end-0 me-2 mt-2"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="/settings">
+                            <?php include $this->resolve("partials/_csrf.php"); ?>
+                            <div class="modal-body">
+                                <div class="form-floating my-1">
+                                    <input type="text" class="form-control" id="textInput" name="addExpenseCategory" value="" required />
                                     <label for="textInput">Nazwa nowej kategorii</label>
                                 </div>
                             </div>

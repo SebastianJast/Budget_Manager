@@ -211,4 +211,15 @@ class ExpenseService
             ]
         );
     }
+
+    public function addExpenseCategory(array $formData)
+    {
+        $this->db->query(
+            "INSERT INTO expenses_category_assigned_to_users(user_id, name) VALUES(:user_id, :name)",
+            [
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['addExpenseCategory']
+            ]
+        );
+    }
 }
