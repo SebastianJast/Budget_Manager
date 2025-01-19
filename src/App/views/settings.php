@@ -200,5 +200,44 @@
                     </div>
                 </div>
             </div>
+            <!-- addIncomesCategoryForm -->
+            <div
+                class="modal fade"
+                id="addIncomesCategoryForm"
+                tabindex="-1"
+                aria-labelledby="addIncomesCategoryLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header position-relative" style="height: 100px;">
+                            <h5 class="modal-title position-absolute start-50 top-50 translate-middle" id="addIncomesCategoryLabel">
+                                Podaj nazwę nowej kategorii:
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close position-absolute top-0 end-0 me-2 mt-2"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="/settings">
+                            <?php include $this->resolve("partials/_csrf.php"); ?>
+                            <div class="modal-body">
+                                <div class="form-floating my-1">
+                                    <input type="text" class="form-control" id="textInput" name="addIncomeCategory" value="" required />
+                                    <label for="textInput">Nazwa nowej kategorii</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Ok
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 </main>
 <?php include $this->resolve("partials/_footer.php") ?>

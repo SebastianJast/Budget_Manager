@@ -38,6 +38,8 @@ class SettingsController
 
         $this->expenseService->updatePayment($_POST);
 
+        $this->incomeService->addIncomeCategory($_POST);
+
         redirectTo('/settings');
     }
 }
