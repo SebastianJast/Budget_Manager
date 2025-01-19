@@ -107,7 +107,7 @@ class UserService
     public function userName()
     {
         return $this->db->query(
-            "SELECT users.username from users WHERE id = :id",
+            "SELECT users.username, users.email from users WHERE id = :id",
             [
                 'id' => $_SESSION['user']
             ]

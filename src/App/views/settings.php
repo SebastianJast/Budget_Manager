@@ -44,8 +44,8 @@
                     <p class="my-0 fw-normal">Edycja konta Użytkownika</p>
                 </div>
                 <div class="card-body">
-                    <a class="dropdown-item text-decoration-none text-dark active my-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        href="#">Edycja danych Użytkownika</a>
+                    <a class="dropdown-item text-decoration-none text-dark active my-3"
+                        href="/account">Edycja danych Użytkownika</a>
                     <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         href="#">Usuń swoje konto</a>
                 </div>

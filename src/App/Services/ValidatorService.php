@@ -64,4 +64,14 @@ class ValidatorService
             'payMethod' => ['required']
         ]);
     }
+
+    public function validateEditAccount(array $formData)
+    {
+        $this->validator->validate($formData, [
+            'login' => ['required', 'loginLength', 'loginFormat'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'passwordLength'],
+            'confirmPassword' => ['required', 'match:password'],
+        ]);
+    }
 }
