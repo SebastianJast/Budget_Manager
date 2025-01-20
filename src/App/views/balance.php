@@ -7,7 +7,7 @@
     </a>
   </p>
   <div class="collapse text-center col-xxl-8 col-md-6 col-sm-12 mx-auto" id="collapseExample">
-    <div class="card card-body">
+    <div class="card card-body mx-3">
       <form action="/balance" method="GET">
         <button type="submit" class="dropdown-item text-decoration-none text-dark active" name="currentMonth" value="currentMonth">Bieżący
           miesiąc</button>
@@ -24,7 +24,7 @@
     <?php echo e($selectedTitle); ?>
   </h2>
   <div
-    class="row d-flex flex-column flex-lg-row justify-content-center align-items-center gap-4 row-cols-1 row-cols-md-3 mb-3 text-center">
+    class="row d-flex flex-column flex-lg-row justify-content-center align-items-center gap-4 row-cols-1 row-cols-md-1 row-cols-lg-3 mb-3 col-12 col-md-8 col-lg-12 mx-auto text-center">
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">
@@ -105,24 +105,24 @@
     </div>
   </div>
   <div class="d-flex justify-content-center text-center">
-    <div class="col-xxl-8 col-md-8 col-sm-12 mx-lg-auto">
+    <div class="col-11 col-xxl-8 col-md-8 col-sm-11 mx-lg-auto">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-body">
           <ul class="list-unstyled mt-1 mb-4">
             <li class="fw-bold py-2">Bilans: <?php echo e($balance); ?></li>
-            <?php if($balance > 0): ?>
-            <li class="text-success fw-bold"> Gratulacje. Świetnie zarządzasz finansami! </li>
+            <?php if ($balance > 0): ?>
+              <li class="text-success fw-bold"> Gratulacje. Świetnie zarządzasz finansami! </li>
             <?php elseif ($balance == 0): ?>
-            <li class="text-warning fw-bold"> Bilans wynosi zero - warto przemyśleć oszczędności. </li>
+              <li class="text-warning fw-bold"> Bilans wynosi zero - warto przemyśleć oszczędności. </li>
             <?php else: ?>
-            <li class="text-danger fw-bold"> Ostrożnie! Przekroczyłeś budżet – czas na oszczędności </li>
+              <li class="text-danger fw-bold"> Ostrożnie! Przekroczyłeś budżet – czas na oszczędności </li>
             <?php endif; ?>
           </ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="mx-auto col-xxl-8 col-md-8 col-sm-12">
+  <div class="mx-auto col-11 col-xxl-8 col-md-8 col-sm-11">
     <div id="chartContainer" style="height: 300px; width: 100%"></div>
   </div>
   <div

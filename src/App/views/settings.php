@@ -5,7 +5,7 @@
     </h2>
     <div
         class="row d-flex flex-column flex-lg-row justify-content-center align-items-center gap-4 row-cols-1 row-cols-md-2 mb-3 text-center">
-        <div class="col">
+        <div class="col-11 col-md-8 col-sm-11 col-lg-6">
             <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
                     <p class="my-0 fw-norma">Edycja nazwy kategorii</p>
