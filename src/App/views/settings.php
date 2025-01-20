@@ -46,7 +46,7 @@
                 <div class="card-body">
                     <a class="dropdown-item text-decoration-none text-dark active my-3"
                         href="/account">Edycja danych Użytkownika</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#deleteUser"
                         href="#">Usuń swoje konto</a>
                 </div>
                 <div class="card-header py-3">
@@ -440,6 +440,39 @@
                                 </button>
                                 <button type="submit" class="btn btn-primary">
                                     Ok
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- deleteUser -->
+            <div
+                class="modal fade"
+                id="deleteUser"
+                tabindex="-1"
+                aria-labelledby="deleteUserLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <button
+                            type="button"
+                            class="btn-close position-absolute top-0 end-0 me-2 mt-2"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                        </button>
+                        <form method="POST" action="/settings">
+                            <input type="hidden" name="_METHOD" value="DELETE">
+                            <?php include $this->resolve("partials/_csrf.php"); ?>
+                            <div class="w-50 mx-auto">
+                                <p class="mt-5">Czy napewno chcesz usunąć konto ?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Nie
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Tak
                                 </button>
                             </div>
                         </form>

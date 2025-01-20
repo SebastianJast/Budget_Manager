@@ -32,6 +32,7 @@ function registerRoutes(App $app)
     $app->post('/settings', [SettingsController::class, 'edit'])->add(AuthRequiredMiddleware::class);
     $app->get('/account', [AccountController::class, 'editView'])->add(AuthRequiredMiddleware::class);
     $app->post('/account', [AccountController::class, 'edit'])->add(AuthRequiredMiddleware::class);
+    $app->delete('/settings', [SettingsController::class, 'delete']);
 
     $app->setErrorHandler([ErrorController::class, 'notFound']);
 }

@@ -132,4 +132,14 @@ class UserService
             ]
         );
     }
+
+    public function deleteUser()
+    {
+        $this->db->query(
+            "DELETE FROM users WHERE id = :id",
+            [
+                'id' => $_SESSION['user']
+            ]
+        );
+    }
 }

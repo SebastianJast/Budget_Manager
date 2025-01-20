@@ -6,11 +6,12 @@ namespace App\Controllers;
 
 use App\Services\ExpenseService;
 use App\Services\IncomeService;
+use App\Services\UserService;
 use Framework\TemplateEngine;
 
 class SettingsController
 {
-    public function __construct(private TemplateEngine $view, private IncomeService $incomeService, private ExpenseService $expenseService) {}
+    public function __construct(private TemplateEngine $view, private IncomeService $incomeService, private ExpenseService $expenseService, private UserService $userService) {}
 
     public function createView()
     {
@@ -63,5 +64,13 @@ class SettingsController
         }
 
         redirectTo('/settings');
+    }
+
+    public function delete()
+    {
+        $this->userService->deleteUser();
+
+        redirectTo('/logout');
+
     }
 }
