@@ -21,8 +21,8 @@
     </header>
     <main>
         <div class="container col-xxl-10 px-4 py-1">
-            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div class="col-12 col-sm-12 col-lg-6">
+            <div class="row flex-lg-row align-items-center g-5 py-5">
+                <div class="col-12 col-sm-12 col-lg-6 order-last">
                     <img
                         src="./images/budget.svg"
                         class="d-block mx-lg-auto img-fluid"
@@ -31,7 +31,7 @@
                         height="500"
                         loading="lazy" />
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 order-first">
                     <p class="lead text-white">
                         Masz ciągle problemy finasowe? Nie wiesz ile wydałeś i na co
                         wydałeś? Ta aplikacja jest właśnie dla Ciebie! Dzięki aplikacji
