@@ -29,10 +29,12 @@ function registerRoutes(App $app)
     $app->post('/expense/{expense}', [ExpenseController::class, 'edit']);
     $app->delete('/expense/{expense}', [ExpenseController::class, 'delete']);
     $app->get('/settings', [SettingsController::class, 'createView'])->add(AuthRequiredMiddleware::class);
-    $app->post('/settings', [SettingsController::class, 'edit'])->add(AuthRequiredMiddleware::class);
+    $app->post('/settings/create', [SettingsController::class, 'create'])->add(AuthRequiredMiddleware::class);
+    $app->post('/settings/edit', [SettingsController::class, 'edit'])->add(AuthRequiredMiddleware::class);
+    $app->post('/settings/delete', [SettingsController::class, 'delete'])->add(AuthRequiredMiddleware::class);
+    $app->delete('/settings', [SettingsController::class, 'deleteUser']);
     $app->get('/account', [AccountController::class, 'editView'])->add(AuthRequiredMiddleware::class);
     $app->post('/account', [AccountController::class, 'edit'])->add(AuthRequiredMiddleware::class);
-    $app->delete('/settings', [SettingsController::class, 'delete']);
 
     $app->setErrorHandler([ErrorController::class, 'notFound']);
 }

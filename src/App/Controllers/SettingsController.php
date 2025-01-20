@@ -31,14 +31,8 @@ class SettingsController
         );
     }
 
-    public function edit()
+    public function create()
     {
-        $this->incomeService->updateCategory($_POST);
-
-        $this->expenseService->updateCategory($_POST);
-
-        $this->expenseService->updatePayment($_POST);
-
         if (!empty($_POST['addIncomeCategory'])) {
             $this->incomeService->addIncomeCategory($_POST);
         }
@@ -51,6 +45,22 @@ class SettingsController
             $this->expenseService->addPayment($_POST);
         }
 
+        redirectTo('/settings');
+    }
+
+    public function edit()
+    {
+        $this->incomeService->updateCategory($_POST);
+
+        $this->expenseService->updateCategory($_POST);
+
+        $this->expenseService->updatePayment($_POST);
+
+        redirectTo('/settings');
+    }
+
+    public function delete()
+    {
         if (!empty($_POST['deleteIncomeCategory'])) {
             $this->incomeService->deleteIncomeCategory($_POST);
         }
@@ -66,11 +76,10 @@ class SettingsController
         redirectTo('/settings');
     }
 
-    public function delete()
+    public function deleteUser()
     {
         $this->userService->deleteUser();
 
         redirectTo('/logout');
-
     }
 }
