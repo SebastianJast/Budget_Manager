@@ -32,11 +32,11 @@
                     </div>
                     <div class="form-floating my-4">
                         <input
-                            value="<?php echo e($oldFormData['date'] ?? ''); ?>"
+                            value="<?php echo e($oldFormData['date'] ?? date('Y-m-d')); ?>"
                             name="date"
                             type="date"
                             class="form-control"
-                            id="dateInput" />
+                            id="dateInput"/>
                         <label for="dateInput">Data</label>
                         <?php if (array_key_exists('date', $errors)) : ?>
                             <div class="mt-1 text-danger">

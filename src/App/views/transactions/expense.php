@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-floating my-4">
                         <input
-                            value="<?php echo e($oldFormData['date'] ?? ''); ?>"
+                            value="<?php echo e($oldFormData['date'] ?? date('Y-m-d')); ?>"
                             name="date"
                             type="date"
                             class="form-control"
