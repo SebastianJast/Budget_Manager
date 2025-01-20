@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Config;
 
 use Framework\App;
-use App\Controllers\{AuthController, HomeController, MainController, IncomeController, ExpenseController, ErrorController, WelcomeController};
+use App\Controllers\{AuthController, HomeController, MainController, IncomeController, ExpenseController, ErrorController, WelcomeController, SettingsController, AccountController};
 use App\Middleware\{AuthRequiredMiddleware, GuestOnlyMiddleware};
 
 function registerRoutes(App $app)
@@ -28,6 +28,13 @@ function registerRoutes(App $app)
     $app->get('/expense/{expense}', [ExpenseController::class, 'editView']);
     $app->post('/expense/{expense}', [ExpenseController::class, 'edit']);
     $app->delete('/expense/{expense}', [ExpenseController::class, 'delete']);
+    $app->get('/settings', [SettingsController::class, 'createView'])->add(AuthRequiredMiddleware::class);
+    $app->post('/settings/create', [SettingsController::class, 'create'])->add(AuthRequiredMiddleware::class);
+    $app->post('/settings/edit', [SettingsController::class, 'edit'])->add(AuthRequiredMiddleware::class);
+    $app->post('/settings/delete', [SettingsController::class, 'delete'])->add(AuthRequiredMiddleware::class);
+    $app->delete('/settings', [SettingsController::class, 'deleteUser']);
+    $app->get('/account', [AccountController::class, 'editView'])->add(AuthRequiredMiddleware::class);
+    $app->post('/account', [AccountController::class, 'edit'])->add(AuthRequiredMiddleware::class);
 
     $app->setErrorHandler([ErrorController::class, 'notFound']);
 }

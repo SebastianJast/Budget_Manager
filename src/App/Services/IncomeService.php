@@ -12,7 +12,7 @@ class IncomeService
     public function selectCategory()
     {
         $incomesCategories = $this->db->query(
-            "SELECT name FROM incomes_category_assigned_to_users WHERE user_id = :user_id",
+            "SELECT name, id FROM incomes_category_assigned_to_users WHERE user_id = :user_id",
             [
                 'user_id' => $_SESSION['user'],
             ]
@@ -114,6 +114,41 @@ class IncomeService
             "DELETE FROM incomes WHERE id = :id AND user_id = :user_id",
             [
                 'id' => $id,
+                'user_id' => $_SESSION['user']
+            ]
+        );
+    }
+
+    public function updateCategory(array $formData)
+    {
+        $this->db->query(
+            "UPDATE incomes_category_assigned_to_users SET name = :name 
+            WHERE user_id = :user_id AND id = :id",
+            [
+                'id' => $formData['idCategoryIncomes'],
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['newCategoryIncomes']
+            ]
+        );
+    }
+
+    public function addIncomeCategory(array $formData)
+    {
+        $this->db->query(
+            "INSERT INTO incomes_category_assigned_to_users(user_id, name) VALUES(:user_id, :name)",
+            [
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['addIncomeCategory']
+            ]
+        );
+    }
+
+    public function deleteIncomeCategory(array $formData)
+    {
+        $this->db->query(
+            "DELETE FROM incomes_category_assigned_to_users WHERE id = :id AND user_id = :user_id",
+            [
+                'id' => $formData['deleteIncomeCategory'],
                 'user_id' => $_SESSION['user']
             ]
         );

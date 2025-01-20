@@ -12,7 +12,7 @@ class ExpenseService
     public function selectCategory()
     {
         $expensesCategories = $this->db->query(
-            "SELECT name FROM expenses_category_assigned_to_users WHERE user_id = :user_id",
+            "SELECT name, id FROM expenses_category_assigned_to_users WHERE user_id = :user_id",
             [
                 'user_id' => $_SESSION['user'],
             ]
@@ -37,7 +37,7 @@ class ExpenseService
     public function selectPayment()
     {
         $expensesPayments = $this->db->query(
-            "SELECT name FROM payment_methods_assigned_to_users WHERE user_id = :user_id",
+            "SELECT name, id FROM payment_methods_assigned_to_users WHERE user_id = :user_id",
             [
                 'user_id' => $_SESSION['user'],
             ]
@@ -184,5 +184,75 @@ class ExpenseService
         }
 
         return $dataPoints;
+    }
+
+    public function updateCategory(array $formData)
+    {
+        $this->db->query(
+            "UPDATE expenses_category_assigned_to_users SET name = :name 
+            WHERE user_id = :user_id AND id = :id",
+            [
+                'id' => $formData['idCategoryExpenses'],
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['newCategoryExpenses']
+            ]
+        );
+    }
+
+    public function updatePayment(array $formData)
+    {
+        $this->db->query(
+            "UPDATE payment_methods_assigned_to_users SET name = :name 
+            WHERE user_id = :user_id AND id = :id",
+            [
+                'id' => $formData['idPayment'],
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['newPaymentMethod']
+            ]
+        );
+    }
+
+    public function addExpenseCategory(array $formData)
+    {
+        $this->db->query(
+            "INSERT INTO expenses_category_assigned_to_users(user_id, name) VALUES(:user_id, :name)",
+            [
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['addExpenseCategory']
+            ]
+        );
+    }
+
+    public function addPayment(array $formData)
+    {
+        $this->db->query(
+            "INSERT INTO payment_methods_assigned_to_users(user_id, name) VALUES(:user_id, :name)",
+            [
+                'user_id' => $_SESSION['user'],
+                'name' => $formData['addPaymentMethod']
+            ]
+        );
+    }
+
+    public function deleteExpenseCategory(array $formData)
+    {
+        $this->db->query(
+            "DELETE FROM expenses_category_assigned_to_users WHERE id = :id AND user_id = :user_id",
+            [
+                'id' => $formData['deleteExpenseCategory'],
+                'user_id' => $_SESSION['user']
+            ]
+        );
+    }
+
+    public function deletePayment(array $formData)
+    {
+        $this->db->query(
+            "DELETE FROM payment_methods_assigned_to_users WHERE id = :id AND user_id = :user_id",
+            [
+                'id' => $formData['deletePaymentMethod'],
+                'user_id' => $_SESSION['user']
+            ]
+        );
     }
 }

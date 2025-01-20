@@ -107,10 +107,39 @@ class UserService
     public function userName()
     {
         return $this->db->query(
-            "SELECT users.username from users WHERE id = :id",
+            "SELECT users.username, users.email from users WHERE id = :id",
             [
                 'id' => $_SESSION['user']
             ]
         )->find();
+    }
+
+    public function updateAccount(array $formData)
+    {
+        $password = password_hash($formData['password'], PASSWORD_BCRYPT, ['cost' => 12]);
+
+        $this->db->query(
+            "UPDATE users 
+            SET username = :username,
+            password = :password,
+            email = :email
+            WHERE id = :id",
+            [
+                'id' => $_SESSION['user'],
+                'username' => $formData['login'],
+                'password' => $password,
+                'email' => $formData['email']
+            ]
+        );
+    }
+
+    public function deleteUser()
+    {
+        $this->db->query(
+            "DELETE FROM users WHERE id = :id",
+            [
+                'id' => $_SESSION['user']
+            ]
+        );
     }
 }
