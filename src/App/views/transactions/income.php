@@ -2,7 +2,7 @@
 <main>
     <div class="container col-xxl-10 px-1 py-1">
         <div class="row d-flex flex-column flex-lg-row align-items-center">
-            <div class="col-12 col-sm-6 col-lg-6 order-2">
+            <div class="col-11 col-sm-10 col-lg-6 order-2">
                 <img
                     src="../images/area_chart.svg"
                     class="d-block mx-lg-auto img-fluid"
@@ -11,7 +11,7 @@
                     height="500"
                     loading="lazy" />
             </div>
-            <div class="container col-12 col-sm-12 col-lg-6">
+            <div class="container col-11 col-sm-12 col-lg-6">
                 <form action="/income" method="POST" class="w-100">
                     <?php include $this->resolve("partials/_csrf.php"); ?>
                     <h2 class="h1 mb-3 fw-bold text-white">Wprowadź przychód</h2>
