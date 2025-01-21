@@ -50,11 +50,17 @@ class SettingsController
 
     public function edit()
     {
-        $this->incomeService->updateCategory($_POST);
+        if (!empty($_POST['newCategoryIncomes'])) {
+            $this->incomeService->updateCategory($_POST);
+        }
 
-        $this->expenseService->updateCategory($_POST);
+        if (!empty($_POST['newCategoryExpenses'])) {
+            $this->expenseService->updateCategory($_POST);
+        }
 
-        $this->expenseService->updatePayment($_POST);
+        if (!empty($_POST['newPaymentMethod'])) {
+            $this->expenseService->updatePayment($_POST);
+        }
 
         redirectTo('/settings');
     }
