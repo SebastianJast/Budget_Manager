@@ -10,34 +10,34 @@
                 <div class="card-header py-3">
                     <p class="my-0 fw-norma">Edycja nazwy kategorii</p>
                 </div>
-                <div class="card-body d-flex">
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#editIncomesCategoryForm"
+                <div class="card-body d-flex-column d-md-flex">
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#editIncomesCategoryForm"
                         href="#">Przychody</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#editExpensesCategoryForm"
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#editExpensesCategoryForm"
                         href="#">Wydatki</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#editPaymentMethodsForm"
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#editPaymentMethodsForm"
                         href="#">Sposoby płatności</a>
                 </div>
                 <div class="card-header py-3">
                     <p class="my-0 fw-normal">Dodanie nowej kategorii</p>
                 </div>
-                <div class="card-body d-flex">
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#addIncomesCategoryForm"
+                <div class="card-body d-flex-column d-md-flex">
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#addIncomesCategoryForm"
                         href="#">Przychody</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#addExpensesCategoryForm"
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#addExpensesCategoryForm"
                         href="#">Wydatki</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#addPaymentMethods"
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#addPaymentMethods"
                         href="#">Sposoby płatności</a>
                 </div>
                 <div class="card-header py-3">
                     <p class="my-0 fw-normal">Usuwanie kategorii</p>
                 </div>
-                <div class="card-body d-flex">
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#deleteIncomesCategoryForm"
+                <div class="card-body d-flex-column d-md-flex">
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#deleteIncomesCategoryForm"
                         href="#">Przychody</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#deleteExpensesCategoryForm"
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#deleteExpensesCategoryForm"
                         href="#">Wydatki</a>
-                    <a class="dropdown-item text-decoration-none text-dark active" data-bs-toggle="modal" data-bs-target="#deletePaymentMethods"
+                    <a class="dropdown-item text-decoration-none text-dark active mt-1" data-bs-toggle="modal" data-bs-target="#deletePaymentMethods"
                         href="#">Sposoby płatności</a>
                 </div>
                 <div class="card-header py-3">
