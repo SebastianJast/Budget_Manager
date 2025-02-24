@@ -1,5 +1,5 @@
 <?php include $this->resolve("partials/_header.php") ?>
-<main class="d-flex flex-column align-items-center justify-content-center">
+<main class="d-flex flex-column align-items-center justify-content-center h-50">
   <div class="display-5 fw-bold mb-5 text-center mt-5 text-success">Witaj!! <?php echo e($userName); ?></div>
   <div class="col-lg-6 text-center">
     <p class="lead text-white fs-5"> 

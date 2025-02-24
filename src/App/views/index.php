@@ -21,7 +21,7 @@
     </header>
     <main>
         <div class="container col-xxl-10 px-4 py-1">
-            <div class="row flex-lg-row align-items-center g-5 py-5">
+            <div class="row flex-lg-row align-items-center g-5 py-3">
                 <div class="col-12 col-sm-12 col-lg-6 order-last">
                     <img
                         src="./images/budget.svg"
