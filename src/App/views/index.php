@@ -35,7 +35,7 @@
                     <p class="lead text-white">
                         Masz ciągle problemy finasowe? Nie wiesz ile wydałeś i na co
                         wydałeś? Ta aplikacja jest właśnie dla Ciebie! Dzięki aplikacji
-                        Budget Manager będiesz mógł nareszcie kontrolować swoje wydatki.
+                        Budget Manager będziesz mógł nareszcie kontrolować swoje wydatki.
                         Wystarczy tylko dokonać darmowej rejestracji i zalogować się na
                         wybrane konto.
                     </p>

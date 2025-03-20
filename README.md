@@ -64,3 +64,7 @@ To run this project locally, follow these steps:
 
 5. **Access the Backend**:
    - Visit [http://localhost/budget_manager](http://localhost/budget_manager) in your browser.
+
+6. **Author**:
+- GitHub - [@SebastianJast](https://github.com/SebastianJast)
+- Website - [Sebastian](https://sebastianjast.github.io/Responsive_CV/)
