@@ -9,10 +9,11 @@ use Framework\Database;
 class ExpenseService
 {
     public function __construct(private Database $db) {}
+    
     public function selectCategory()
     {
         $expensesCategories = $this->db->query(
-            "SELECT name, id FROM expenses_category_assigned_to_users WHERE user_id = :user_id",
+            "SELECT name, id, limits FROM expenses_category_assigned_to_users WHERE user_id = :user_id",
             [
                 'user_id' => $_SESSION['user'],
             ]

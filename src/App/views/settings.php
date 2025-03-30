@@ -487,6 +487,10 @@
                                         <label class="form-check-label" for="exampleRadios<?php echo e($expenseCategory['id']); ?>">
                                             <?php echo e($expenseCategory['name']); ?>
                                         </label>
+                                        <?php if($expenseCategory['limits']): ?>
+                                            <br>
+                                        <?php endif; ?>
+                                        <p class="fst-italic fw-light m-0"><?php echo e($expenseCategory['limits'] ? ("Limit: " . $expenseCategory['limits'] . " zł") : "") ?></p>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
