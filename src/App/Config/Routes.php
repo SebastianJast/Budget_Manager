@@ -33,6 +33,7 @@ function registerRoutes(App $app)
     $app->post('/settings/edit', [SettingsController::class, 'edit'])->add(AuthRequiredMiddleware::class);
     $app->post('/settings/delete', [SettingsController::class, 'delete'])->add(AuthRequiredMiddleware::class);
     $app->delete('/settings', [SettingsController::class, 'deleteUser']);
+    $app->post('/settings/limits', [SettingsController::class, 'limits'])->add(AuthRequiredMiddleware::class);
     $app->get('/account', [AccountController::class, 'editView'])->add(AuthRequiredMiddleware::class);
     $app->post('/account', [AccountController::class, 'edit'])->add(AuthRequiredMiddleware::class);
 

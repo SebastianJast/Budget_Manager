@@ -476,7 +476,7 @@
                             <?php include $this->resolve("partials/_csrf.php"); ?>
                             <div class="modal-body">
                                 <div class="form-floating my-1">
-                                    <input type="text" class="form-control" id="textInput" name="limit" value="" required />
+                                    <input type="number" class="form-control" id="textInput" name="limit" value="" required />
                                     <label for="textInput">Kwota</label>
                                 </div>
                             </div>

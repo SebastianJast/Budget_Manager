@@ -255,4 +255,17 @@ class ExpenseService
             ]
         );
     }
+
+    public function addLimit(array $formData)
+    {
+        $this->db->query(
+           "UPDATE expenses_category_assigned_to_users SET limits = :limit 
+            WHERE user_id = :user_id AND id = :id",
+            [
+                'limit' => $formData['limit'],
+                'id' => $formData['idCategoryExpenses'],
+                'user_id' => $_SESSION['user']
+            ]
+        );
+    }
 }
