@@ -3,13 +3,24 @@
     <div class="container col-xxl-10 px-1 py-1">
         <div class="row d-flex flex-column flex-lg-row align-items-center">
             <div class="col-11 col-sm-10 col-lg-6 order-2">
-                <img
-                    src="../images/area_chart.svg"
-                    class="d-block mx-lg-auto img-fluid"
-                    alt="Account"
-                    width="500"
-                    height="500"
-                    loading="lazy" />
+                <div class="col-md-12 mb-3 mt-4 pt-5">
+                    <div class="h-100 p-4 border border-2 rounded-3 text-white">
+                        <h3>Limit info</h3>
+                        <p>category required</p>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <div class="h-100 p-4 border border-2 rounded-3 text-white">
+                        <h3>Limit value</h3>
+                        <p>category and date required</p>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-5">
+                    <div class="h-100 p-4 border border-2 rounded-3 text-white">
+                        <h3>Cash left</h3>
+                        <p>category, date & amount required </p>
+                    </div>
+                </div>
             </div>
             <div class="container col-11 col-sm-12 col-lg-6">
                 <form action="/expense" method="POST" class="w-100">
