@@ -9,7 +9,7 @@ use Framework\Database;
 class ExpenseService
 {
     public function __construct(private Database $db) {}
-    
+
     public function selectCategory()
     {
         $expensesCategories = $this->db->query(
@@ -260,7 +260,7 @@ class ExpenseService
     public function addLimit(array $formData)
     {
         $this->db->query(
-           "UPDATE expenses_category_assigned_to_users SET limits = :limit 
+            "UPDATE expenses_category_assigned_to_users SET limits = :limit 
             WHERE user_id = :user_id AND id = :id",
             [
                 'limit' => $formData['limit'],
@@ -268,5 +268,29 @@ class ExpenseService
                 'user_id' => $_SESSION['user']
             ]
         );
+    }
+
+    public function sumExpensesByMonthAndCategory(array $formData)
+    {
+        $date = $formData['date'];
+        $month = date('m', strtotime($date));
+
+        $rows = $this->db->query(
+            "SELECT expenses_category_assigned_to_users.name, SUM(expenses.amount) AS 'expensesSUM' FROM expenses
+            INNER JOIN expenses_category_assigned_to_users ON expenses_category_assigned_to_users.user_id = expenses.user_id
+            WHERE expenses.expense_category_assigned_to_user_id = expenses_category_assigned_to_users.id AND
+            expenses_category_assigned_to_users.name = :category
+            AND expenses.date_of_expense LIKE '%:month%'
+            AND expenses.user_id = :user_id
+            GROUP BY expenses.expense_category_assigned_to_user_id
+            ORDER BY expensesSUM DESC",
+            [
+                'user_id' => $_SESSION['user'],
+                'category' => $formData['category'],
+                'month' => $month
+            ]
+        )->findAll();
+
+        return $rows;
     }
 }
