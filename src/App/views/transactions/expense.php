@@ -5,20 +5,20 @@
             <div class="col-11 col-sm-10 col-lg-6 order-2">
                 <div class="col-md-12 mb-3 mt-4 pt-5">
                     <div class="h-100 p-4 border border-2 rounded-3 text-white">
-                        <h3>Limit info</h3>
-                        <p>category required</p>
+                        <h3>Informacja o limicie</h3>
+                        <p>Wybierz kategorię</p>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
                     <div class="h-100 p-4 border border-2 rounded-3 text-white">
-                        <h3>Limit value</h3>
-                        <p>category and date required</p>
+                        <h3>Wartość wydatków</h3>
+                        <p id="limit-value">Wybierz kategorię i datę</p>
                     </div>
                 </div>
                 <div class="col-md-12 mb-5">
                     <div class="h-100 p-4 border border-2 rounded-3 text-white">
-                        <h3>Cash left</h3>
-                        <p>category, date & amount required </p>
+                        <h3>Pozostała gotówka</h3>
+                        <p>Wybierz, kategorię, datę i kwotę </p>
                     </div>
                 </div>
             </div>
