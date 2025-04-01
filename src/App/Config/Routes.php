@@ -38,4 +38,6 @@ function registerRoutes(App $app)
     $app->post('/account', [AccountController::class, 'edit'])->add(AuthRequiredMiddleware::class);
 
     $app->setErrorHandler([ErrorController::class, 'notFound']);
+
+    $app->get('api/expenses/{category}/{month}',[ExpenseController::class, 'expenseSum']);
 }

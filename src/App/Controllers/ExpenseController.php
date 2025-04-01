@@ -85,4 +85,11 @@ class ExpenseController
 
         redirectTo('/balance');
     }
+
+    public function expenseSum(array $params)
+    {
+        $category = urldecode($params['category']);
+        $month = $params['month'];
+        echo json_encode($this->expenseService->sumExpensesByMonthAndCategory($category,$month), JSON_UNESCAPED_UNICODE);
+    }
 }
