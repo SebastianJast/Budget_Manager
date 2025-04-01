@@ -290,4 +290,17 @@ class ExpenseService
 
         return $rows;
     }
+
+    public function limitCategory($category)
+    {
+        $rows = $this->db->query(
+            "SELECT limits FROM expenses_category_assigned_to_users WHERE name = :category AND user_id = :user_id",
+            [
+                'user_id' => $_SESSION['user'],
+                'category' => $category,
+            ]
+        )->find();
+
+        return $rows;
+    }
 }
