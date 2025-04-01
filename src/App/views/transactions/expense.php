@@ -6,7 +6,7 @@
                 <div class="col-md-12 mb-3 mt-4 pt-5">
                     <div class="h-100 p-4 border border-2 rounded-3 text-white">
                         <h3>Informacja o limicie</h3>
-                        <p>Wybierz kategorię</p>
+                        <p id="limit-info">Wybierz kategorię</p>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
