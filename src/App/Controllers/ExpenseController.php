@@ -92,4 +92,10 @@ class ExpenseController
         $month = $params['month'];
         echo json_encode($this->expenseService->sumExpensesByMonthAndCategory($category,$month), JSON_UNESCAPED_UNICODE);
     }
+
+    public function limit(array $params)
+    {
+        $category = urldecode($params['category']);
+        echo json_encode($this->expenseService->limitCategory($category), JSON_UNESCAPED_UNICODE);
+    }
 }

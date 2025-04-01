@@ -40,4 +40,5 @@ function registerRoutes(App $app)
     $app->setErrorHandler([ErrorController::class, 'notFound']);
 
     $app->get('api/expenses/{category}/{month}',[ExpenseController::class, 'expenseSum']);
+    $app->get('api/limit/{category}', [ExpenseController::class, 'limit']);
 }
