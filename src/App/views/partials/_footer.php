@@ -22,6 +22,7 @@
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
   crossorigin="anonymous"></script>
 <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+<script src="js/limit.js" charset="utf-8"></script>
 </body>
 
 </html>
