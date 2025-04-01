@@ -1,7 +1,7 @@
 // Limit value
 
-const categorySelect = document.querySelector("#categorySelect");
-const dateSelect = document.querySelector("#dateInput");
+const categorySelect = document.querySelector("#category-select-expense");
+const dateSelect = document.querySelector("#date-input-expense");
 
 categorySelect.addEventListener("change", limitValue);
 dateSelect.addEventListener("change", limitValue);
@@ -40,7 +40,9 @@ function limitInfo() {
       const res = await fetch(`../api/limit/${category}`);
       const data = await res.json();
       console.log(data.limits);
-      const limit = data.limits ? "Limit dla wybranej kategorii wynosi: " + data.limits + " zł" : "Wybrana kategoria nie ma ustawionego limitu";
+      const limit = data.limits
+        ? "Limit dla wybranej kategorii wynosi: " + data.limits + " zł"
+        : "Wybrana kategoria nie ma ustawionego limitu";
       const limitInfo = document.querySelector("#limit-info");
       limitInfo.innerHTML = limit;
     } catch (e) {

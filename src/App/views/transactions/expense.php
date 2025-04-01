@@ -32,9 +32,9 @@
                             name="amount"
                             type="number"
                             class="form-control"
-                            id="floatingInput"
+                            id="floating-input-expense"
                             placeholder="Wprowadź kwotę" />
-                        <label for="floatingInput">Kwota</label>
+                        <label for="floating-input-expense">Kwota</label>
                         <?php if (array_key_exists('amount', $errors)) : ?>
                             <div class="mt-1 text-danger">
                                 <?php echo e($errors['amount'][0]); ?>
@@ -47,8 +47,8 @@
                             name="date"
                             type="date"
                             class="form-control"
-                            id="dateInput" />
-                        <label for="dateInput">Data</label>
+                            id="date-input-expense" />
+                        <label for="date-input-expense">Data</label>
                         <?php if (array_key_exists('date', $errors)) : ?>
                             <div class="mt-1 text-danger">
                                 <?php echo e($errors['date'][0]); ?>
@@ -56,13 +56,13 @@
                         <?php endif; ?>
                     </div>
                     <div class="form-floating my-4">
-                        <select name="category" id="categorySelect" class="form-control">
+                        <select name="category" id="category-select-expense" class="form-control">
                             <option value="<?php echo e($oldFormData['category'] ?? ''); ?>"><?php echo e($oldFormData['category'] ?? '-- Wybierz kategorię --'); ?></option>
                             <?php foreach ($expensesCategories as $expenseCategory) {
                                 echo '<option value="' . ($expenseCategory['name']) . '">' . $expenseCategory['name'] . '</option>';
                             } ?>
                         </select>
-                        <label for="categorySelect">Kategoria</label>
+                        <label for="category-select-expense">Kategoria</label>
                         <?php if (array_key_exists('category', $errors)) : ?>
                             <div class="mt-1 text-danger">
                                 <?php echo e($errors['category'][0]); ?>
@@ -70,13 +70,13 @@
                         <?php endif; ?>
                     </div>
                     <div class="form-floating my-4">
-                        <select id="payMethodSelect" class="form-control" name="payMethod">
+                        <select id="pay-method-select-expense" class="form-control" name="payMethod">
                             < <option value="<?php echo e($oldFormData['payMethod'] ?? ''); ?>"><?php echo e($oldFormData['payMethod'] ?? '-- Wybierz kategorię --'); ?></option>
                                 <?php foreach ($expensesPayments as $expensesPayment) {
                                     echo '<option value="' . ($expensesPayment['name']) . '">' . $expensesPayment['name'] . '</option>';
                                 } ?>
                         </select>
-                        <label for="payMethodSelect">Metoda płatności</label>
+                        <label for="pay-method-select-expense">Metoda płatności</label>
                         <?php if (array_key_exists('payMethod', $errors)) : ?>
                             <div class="mt-1 text-danger">
                                 <?php echo e($errors['payMethod'][0]); ?>
@@ -89,9 +89,9 @@
                             name="comment"
                             type="text"
                             class="form-control"
-                            id="commentInput"
+                            id="comment-input-expense"
                             placeholder="Komentarz" />
-                        <label for="commentInput">Komentarz</label>
+                        <label for="comment-input-expense">Komentarz</label>
                         <?php if (array_key_exists('comment', $errors)) : ?>
                             <div class="mt-1 text-danger">
                                 <?php echo e($errors['comment'][0]); ?>
