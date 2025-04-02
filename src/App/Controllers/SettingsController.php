@@ -82,6 +82,14 @@ class SettingsController
         redirectTo('/settings');
     }
 
+    public function limits() {
+        if(!empty($_POST['limit'])) {
+            $this->expenseService->addLimit($_POST);
+        }
+
+        redirectTo('/settings');
+    }
+
     public function deleteUser()
     {
         $this->userService->deleteUser();

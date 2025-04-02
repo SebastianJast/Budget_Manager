@@ -9,10 +9,11 @@ use Framework\Database;
 class ExpenseService
 {
     public function __construct(private Database $db) {}
+
     public function selectCategory()
     {
         $expensesCategories = $this->db->query(
-            "SELECT name, id FROM expenses_category_assigned_to_users WHERE user_id = :user_id",
+            "SELECT name, id, limits FROM expenses_category_assigned_to_users WHERE user_id = :user_id",
             [
                 'user_id' => $_SESSION['user'],
             ]
@@ -254,5 +255,52 @@ class ExpenseService
                 'user_id' => $_SESSION['user']
             ]
         );
+    }
+
+    public function addLimit(array $formData)
+    {
+        $this->db->query(
+            "UPDATE expenses_category_assigned_to_users SET limits = :limit 
+            WHERE user_id = :user_id AND id = :id",
+            [
+                'limit' => $formData['limit'],
+                'id' => $formData['idCategoryExpenses'],
+                'user_id' => $_SESSION['user']
+            ]
+        );
+    }
+
+    public function sumExpensesByMonthAndCategory($category, $month)
+    {
+        $rows = $this->db->query(
+            "SELECT expenses_category_assigned_to_users.name, SUM(expenses.amount) AS 'expensesSUM' FROM expenses
+            INNER JOIN expenses_category_assigned_to_users ON expenses_category_assigned_to_users.user_id = expenses.user_id
+            WHERE expenses.expense_category_assigned_to_user_id = expenses_category_assigned_to_users.id AND
+            expenses_category_assigned_to_users.name = :category
+            AND expenses.date_of_expense LIKE :month
+            AND expenses.user_id = :user_id
+            GROUP BY expenses.expense_category_assigned_to_user_id
+            ORDER BY expensesSUM DESC",
+            [
+                'user_id' => $_SESSION['user'],
+                'category' => $category,
+                'month' => '%' . $month . '%'
+            ]
+        )->find();
+
+        return $rows;
+    }
+
+    public function limitCategory($category)
+    {
+        $rows = $this->db->query(
+            "SELECT limits FROM expenses_category_assigned_to_users WHERE name = :category AND user_id = :user_id",
+            [
+                'user_id' => $_SESSION['user'],
+                'category' => $category,
+            ]
+        )->find();
+
+        return $rows;
     }
 }
