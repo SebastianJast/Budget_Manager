@@ -1,7 +1,8 @@
-// Limit value
-
 const categorySelect = document.querySelector("#category-select-expense");
 const dateSelect = document.querySelector("#date-input-expense");
+const amount = document.querySelector("#floating-input-expense");
+
+// Limit value
 
 categorySelect.addEventListener("change", limitValue);
 dateSelect.addEventListener("change", limitValue);
@@ -20,6 +21,7 @@ function limitValue() {
         : "Nie wydałeś żadnych pieniędzy na tą kategorię w tym miesiącu!";
       const limitValue = document.querySelector("#limit-value");
       limitValue.innerHTML = expensesSUM;
+      limitValue.style.color = "orange";
     } catch (e) {
       console.log("ERROR", e);
     }
@@ -28,9 +30,10 @@ function limitValue() {
   sumExpensesByMonthAndCategory();
 }
 
-// Limit info
+// Limit info, Cash left
 
 categorySelect.addEventListener("change", limitInfo);
+amount.addEventListener("input", limitInfo);
 
 function limitInfo() {
   const category = categorySelect.value;
@@ -44,7 +47,12 @@ function limitInfo() {
         ? "Limit dla wybranej kategorii wynosi: " + data.limits + " zł"
         : "Wybrana kategoria nie ma ustawionego limitu";
       const limitInfo = document.querySelector("#limit-info");
+      limitInfo.style.color = "orange";
       limitInfo.innerHTML = limit;
+      const cashLeftInfo = document.querySelector("#cash-left");
+      const cashLeft = data.limits - amount.value;
+      cashLeftInfo.style.color = cashLeft < 0 ? "red" : "green";
+      cashLeftInfo.innerHTML = "Pozostały limit: " + cashLeft + "zł";
     } catch (e) {
       console.log("ERROR", e);
     }
