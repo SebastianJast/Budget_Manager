@@ -1,4 +1,4 @@
-p<?php include $this->resolve("partials/_header.php") ?>
+<?php include $this->resolve("partials/_header.php") ?>
 <main>
     <div class="container col-xxl-10 px-1 py-1">
         <div class="row d-flex flex-column flex-lg-row align-items-center">
