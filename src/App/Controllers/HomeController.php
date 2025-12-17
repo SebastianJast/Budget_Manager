@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Services\{ExpenseService, IncomeService, TransactionsService};
+use App\Services\{ExpenseService, IncomeService, SummaryService, TransactionsService};
 use Framework\TemplateEngine;
 
 class HomeController
 {
-    public function __construct(private TemplateEngine $view, private IncomeService $incomeService, private ExpenseService $expenseService, private TransactionsService $transactionsService) {}
+    public function __construct(private TemplateEngine $view, private IncomeService $incomeService, private ExpenseService $expenseService, private TransactionsService $transactionsService, private SummaryService $summaryService) {}
 
     public function home()
     {
@@ -23,6 +23,9 @@ class HomeController
 
         $dataPoints = $this->expenseService->getExpensesChartData($firstDayMonth, $lastDayMonth);
 
+        $advice = $this->summaryService->generateFinancialAdvice($incomes, $expenses, $balance);
+
+        
         echo $this->view->render(
             "/balance.php",
             [
@@ -30,8 +33,10 @@ class HomeController
                 'expenses' => $expenses,
                 'selectedTitle' => $selectedTitle,
                 'balance' => $balance,
-                'dataPoints' => $dataPoints
+                'dataPoints' => $dataPoints,
+                'advice' => $advice
             ]
         );
     }
+    
 }

@@ -118,6 +118,14 @@
               <li class="text-danger fw-bold"> Ostrożnie! Przekroczyłeś budżet – czas na oszczędności </li>
             <?php endif; ?>
           </ul>
+          <div class="card mt-4 border-primary">
+            <div class="card-header bg-primary text-white">
+              <i class="bi bi-robot me-2"></i> **Rada Doradcy Finansowego (Gemini AI)**
+            </div>
+            <div class="card-body">
+              <p><?php echo e($advice); ?></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
