@@ -15,7 +15,7 @@ class SummaryService
     public function __construct()
     {
         // Pobieraj klucz ze zmiennych środowiskowych
-        $this->apiKey = 'AIzaSyAjja7DhdzEFjVbHt-M3RFfo3XvgydWlWo';
+        $this->apiKey = $_ENV['GEMINI_API_KEY'] ?? '';
     }
 
     public function generateFinancialAdvice(array $incomes, array $expenses, float $balance): string
