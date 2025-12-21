@@ -23,9 +23,12 @@ class HomeController
 
         $dataPoints = $this->expenseService->getExpensesChartData($firstDayMonth, $lastDayMonth);
 
-        $advice = $this->summaryService->generateFinancialAdvice($incomes, $expenses, $balance);
+        $_SESSION['ai_budget_data'] = [
+            'incomes' => $incomes,
+            'expenses' => $expenses,
+            'balance' => $balance
+        ];
 
-        
         echo $this->view->render(
             "/balance.php",
             [
@@ -33,10 +36,29 @@ class HomeController
                 'expenses' => $expenses,
                 'selectedTitle' => $selectedTitle,
                 'balance' => $balance,
-                'dataPoints' => $dataPoints,
-                'advice' => $advice
+                'dataPoints' => $dataPoints
             ]
         );
     }
-    
+
+    public function getAdvice()
+    {
+        $data = $_SESSION['ai_budget_data'] ?? null;
+
+        if (!$data) {
+            header('Content-Type: application/json');
+            echo json_encode(['advice' => "Nie znaleziono danych do analizy."]);
+            exit;
+        }
+
+        $advice = $this->summaryService->generateFinancialAdvice(
+            $data['incomes'],
+            $data['expenses'],
+            (float)$data['balance']
+        );
+
+        header('Content-Type: application/json');
+        echo json_encode(['advice' => $advice]);
+        exit;
+    }
 }
