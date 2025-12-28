@@ -41,4 +41,6 @@ function registerRoutes(App $app)
 
     $app->get('api/expenses/{category}/{month}',[ExpenseController::class, 'expenseSum']);
     $app->get('api/limit/{category}', [ExpenseController::class, 'limit']);
+
+    $app->get('/api/advice', [HomeController::class, 'getAdvice'])->add(AuthRequiredMiddleware::class);
 }

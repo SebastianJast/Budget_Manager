@@ -118,6 +118,17 @@
               <li class="text-danger fw-bold"> Ostrożnie! Przekroczyłeś budżet – czas na oszczędności </li>
             <?php endif; ?>
           </ul>
+          <div class="card mt-4 border-primary">
+            <div class="card-header bg-primary text-white">
+              <i class="bi bi-robot me-2"></i> Rada Doradcy Finansowego (Gemini AI)
+            </div>
+            <div class="card-body" id="ai-advice-container">
+              <div class="d-flex align-items-center text-muted">
+                <div class="spinner-border spinner-border-sm me-2 text-primary" role="status"></div>
+                <span>Analizowanie Twojego budżetu przez AI...</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -169,4 +180,5 @@
     </div>
   </div>
 </main>
+<script src="/js/ai-advice.js"></script>
 <?php include $this->resolve("partials/_footer.php") ?>
